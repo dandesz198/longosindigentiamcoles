@@ -1,0 +1,68 @@
+$navBg: #2f3542;
+$mainColor: #57606f;
+$inactiveNav: #747d8c;
+
+
+.Sidenav{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 95vh;
+    display: inline-block;
+    background-color: $navBg;
+    width: 15%;
+    li{
+        margin: 0 0 3rem 0;
+        &:hover{
+            background-color: #788397;
+            cursor: pointer;
+        }
+        
+        .Sidenav_Link{
+            box-sizing: border-box;
+		    color: white;
+		    display: inline-block;
+            padding: 1rem; 
+            text-align: center;
+            text-decoration: none;
+            transition: color ease .3s, background-color ease .3s;
+            width: 100%;
+        background-color: $inactiveNav;
+
+            &.active{
+                background-color: $mainColor;
+                &:hover{
+                    background-color: $mainColor;
+                }
+            }
+        }
+    }
+}
+
+.Topnav{
+    width:100%;
+    background-color: $navBg;
+    color: white;
+    display: flex;
+    height: 5vh;
+    align-items: center;
+    p{
+        margin-right: 3vh;
+        font-size: 1.5rem;
+    }
+    span{
+        color: #FF4757;
+        font-size: 1.2rem;
+    }
+    box-sizing: border-box;
+    flex-direction: row-reverse;
+}
+
+
+.Panel_Wrapper{
+    width: 85%;
+    height: 95vh;
+    display: inline-block;
+    vertical-align:top;
+
+}

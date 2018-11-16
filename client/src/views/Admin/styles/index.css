@@ -1,0 +1,77 @@
+.Sidenav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: 95vh;
+  display: inline-block;
+  background-color: #2f3542;
+  width: 15%;
+}
+
+.Sidenav li {
+  margin: 0 0 3rem 0;
+}
+
+.Sidenav li:hover {
+  background-color: #788397;
+  cursor: pointer;
+}
+
+.Sidenav li .Sidenav_Link {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  display: inline-block;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: color ease .3s, background-color ease .3s;
+  transition: color ease .3s, background-color ease .3s;
+  width: 100%;
+  background-color: #747d8c;
+}
+
+.Sidenav li .Sidenav_Link.active {
+  background-color: #57606f;
+}
+
+.Sidenav li .Sidenav_Link.active:hover {
+  background-color: #57606f;
+}
+
+.Topnav {
+  width: 100%;
+  background-color: #2f3542;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 5vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.Topnav p {
+  margin-right: 3vh;
+  font-size: 1.5rem;
+}
+
+.Topnav span {
+  color: #FF4757;
+  font-size: 1.2rem;
+}
+
+.Panel_Wrapper {
+  width: 85%;
+  height: 95vh;
+  display: inline-block;
+  vertical-align: top;
+}
+/*# sourceMappingURL=index.css.map */
