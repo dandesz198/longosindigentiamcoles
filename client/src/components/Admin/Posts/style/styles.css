@@ -1,0 +1,75 @@
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 3vh;
+  color: white;
+  height: 10%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.Panel {
+  height: 100%;
+  width: 100%;
+  background-color: #005eff;
+}
+
+.scrollable {
+  overflow: scroll !important;
+  overflow-x: hidden;
+  height: 90% !important;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.table {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  width: 70%;
+  margin: 0 auto;
+  background-color: #f1f2f6;
+  padding: 2rem 4rem 0 4rem;
+  height: 90%;
+}
+
+.table .table_row {
+  display: block;
+  width: 98%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: .6rem auto;
+  background-color: #005eff;
+  border-radius: 10px;
+}
+
+.table .table_row div {
+  color: white;
+  width: 20%;
+  display: inline-block;
+  padding: 1.2rem;
+}
+
+.table .table_row div.role {
+  text-align: center;
+}
+
+.table .table_row.head {
+  border-bottom: 2px solid black !important;
+  background-color: transparent !important;
+  border-radius: 0;
+}
+
+.table .table_row.head div {
+  padding-bottom: 0.3rem;
+  text-align: center;
+  color: black;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+/*# sourceMappingURL=styles.css.map */
