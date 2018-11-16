@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ArticleCard from "../components/articleCard";
 
 class HomePage extends Component {
   constructor(props) {
@@ -38,12 +39,16 @@ class HomePage extends Component {
     return (
       <div>
         {articles ? (
-          articles.map(article => (
-            <div>
-              <h1>{article.title}</h1>
-              <p>{article.description}</p>
-            </div>
-          ))
+          articles.map(article => {
+            const { title, description, url } = article;
+            return (
+              <ArticleCard
+                title={title}
+                description={description}
+                article={url}
+              />
+            );
+          })
         ) : (
           <div>loading..</div>
         )}
