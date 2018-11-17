@@ -33,12 +33,12 @@ async function login ({ email, password }) {
   return user
 }
 
-async function register ({ email, password, name }) {
+async function register ({ email, password, name, role }) {
   // hash the user password before storing it
   const salt = generateSalt()
   password = hash(password, salt)
 
-  const user = { email, name, password, salt }
+  const user = { email, name, password, salt,  }
   await db
     .collection(collectionName)
     .insertOne(user)
