@@ -10,9 +10,9 @@ class App extends Component {
     return (
       <div className="App">
         <Link to="admin">Admin</Link>
-        <Link to="/">Home</Link>
-        <Router>
-        <HomePage page="/"/>
+        <Link to="home">Home</Link>
+        <Router defaultPage="home">
+        <HomePage page="home"/>
         <AdminPage page="admin"/>
         </Router>
         
