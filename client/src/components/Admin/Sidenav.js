@@ -30,7 +30,8 @@ const List = () => {
         <Ul>
             <Link to={`posts`}>Posts</Link>
             <Link to={`users`}>Users</Link>
-            <Link to={`../`}>Back To Home</Link>
+            <Link to={`../login`}>Login Page</Link>
+            <Link to={`../home`}>User Home</Link>
 
         </Ul>
     )
