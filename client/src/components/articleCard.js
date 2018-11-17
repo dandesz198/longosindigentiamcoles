@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { route } from "react-stax";
 
 const Container = styled.div`
   width: 50%;
@@ -20,15 +21,9 @@ const Paragraph = styled.p`
   margin: 2%;
 `;
 class ArticleCard extends Component {
-  constructor(props) {
-    super(props);
-    this.redirectToArticle = this.redirectToArticle.bind(this);
-  }
-
-  redirectToArticle() {}
   render() {
     return (
-      <Container onClick={this.redirectToArticle}>
+      <Container>
         <Title>{this.props.title}</Title>
         <Paragraph>{this.props.description || "[No description]"}</Paragraph>
       </Container>
