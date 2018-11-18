@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { route } from "react-stax";
+import { Link } from "react-stax";
 
 const Container = styled.div`
   width: 50%;
@@ -26,6 +26,7 @@ class ArticleCard extends Component {
       <Container>
         <Title>{this.props.title}</Title>
         <Paragraph>{this.props.description || "[No description]"}</Paragraph>
+        <Link to={"/articles/" + this.props.id}>Read more</Link>
       </Container>
     );
   }

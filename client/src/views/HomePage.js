@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -49,12 +50,12 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: [],
-      err: ""
+      articles: []
     };
     this.getArticles = this.getArticles.bind(this);
   }
 
+  //Get articles before components mount
   componentWillMount() {
     this.getArticles();
   }
@@ -63,33 +64,35 @@ class HomePage extends Component {
   // API but in the future it will get
   // it from the backend
   async getArticles() {
-    const API_URL =
-      "https://newsapi.org/v2/top-headlines?" +
-      "country=us&" +
-      "apiKey=c2e8566083484f9c91818a52ff2c148f";
+    const API_URL = "https://fake-articles.herokuapp.com/api/articles/";
     const response = await fetch(API_URL);
     const json = await response.json();
-    if (json.status !== "ok") {
-      this.setState({ err: json.message });
-    }
-    this.setState({ articles: json.articles });
+    console.log(json);
+    this.setState({ articles: json });
   }
 
   render() {
-    const { articles, err } = this.state;
+    const { articles } = this.state;
     return (
-      <Container>
-        {err ? (
-          <h1>{err}</h1>
-        ) : articles ? (
+      <div>
+        {// Show spinner when there are no articles in state
+        articles.length !== 0 ? (
           articles.map(article => {
-            const { title, description } = article;
-            return <ArticleCard title={title} description={description} />;
+            return (
+              <ArticleCard
+                key={article.id}
+                id={article.id}
+                title={article.title}
+                description={article.description}
+              />
+            );
           })
         ) : (
-          <Spinner />
+          <Container>
+            <Spinner />
+          </Container>
         )}
-      </Container>
+      </div>
     );
   }
 }
