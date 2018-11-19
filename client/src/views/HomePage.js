@@ -67,7 +67,6 @@ class HomePage extends Component {
     const API_URL = "https://fake-articles.herokuapp.com/api/articles/";
     const response = await fetch(API_URL);
     const json = await response.json();
-    console.log(json);
     this.setState({ articles: json });
   }
 

@@ -5,6 +5,7 @@ import HomePage from "./views/HomePage";
 import AdminPage from "./views/AdminPage";
 import LoginPage from "./views/LoginPage";
 import { store } from "react-stax";
+import ArticlePage from "./views/ArticlePage";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <HomePage page="home" />
           <LoginPage page="login" />
           <AdminPage page="admin" />
+          <ArticlePage page="articles" />
         </Router>
       </div>
     );
