@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import {Router} from 'react-stax';
 import Posts from './../components/Admin/Posts'
 import Users from './../components/Admin/Users'
+import RegPage from './/RegPage'
+
+
 
 const AdminWrapper = styled.div`
     display: grid;
@@ -20,6 +23,7 @@ const AdminPage = ()=>{
             <Router defaultPage="posts">
                 <Posts page='posts'/>
                 <Users page='users'/>
+                <RegPage page='reg'/>
             </Router>
         </AdminWrapper>
         

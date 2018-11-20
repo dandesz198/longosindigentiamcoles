@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Router, Link } from 'react-stax'
+import { Link } from 'react-stax'
 
 const Ul = styled.div`
     list-style-type: none;
@@ -14,6 +14,7 @@ const Ul = styled.div`
     a{
     width: 100%;
     box-sizing: border-box;
+    margin: 4vh 0 0 0;
     padding: 1.5vh 0;
     background-color: #485460;
     color: white;
@@ -28,9 +29,9 @@ const List = () => {
     return (
 
         <Ul>
-            <Link to={`posts`}>Posts</Link>
+            <Link to={`posts`}>Edit Posts</Link>
             <Link to={`users`}>Users</Link>
-            <Link to={`../login`}>Login Page</Link>
+            <Link to={`reg`}>Register New User</Link>
             <Link to={`../home`}>User Home</Link>
 
         </Ul>
