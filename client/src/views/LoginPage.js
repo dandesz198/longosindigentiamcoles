@@ -30,6 +30,7 @@ class LoginPage extends Component{
             user.name = response.data.user.name;
             console.log(user.email)
             console.log(user.name)
+            console.log(user.isLoggedIn)
             console.log(response);
           })
           .catch(function (error) {

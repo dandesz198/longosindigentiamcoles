@@ -1,9 +1,11 @@
 import {store} from 'react-stax';
 
-const user = store({
-    username: String,
-    name: String,
-    role: String
-})
+const user = store({});
+
+
+
+
+
+
 
 export default user;

@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-stax'
+import user from './../../stores/userStore'
+
 
 const Ul = styled.div`
     list-style-type: none;
     padding: 0;
+    position: relative;
     margin: 0;
     height: 100%;
     display: flex;
@@ -16,24 +19,36 @@ const Ul = styled.div`
     box-sizing: border-box;
     margin: 4vh 0 0 0;
     padding: 1.5vh 0;
-    background-color: #485460;
+    background-color: #ff4757;
     color: white;
     transition: .2s ease background-color;
     text-decoration:none;
     &:hover{
-        background-color: #808e9b;
+        background-color:#ff6b81;
     }
     }
 `;
+
+const CurrentUser = styled.div`
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2f3542;
+    color: white;
+`;
+
+
 const List = () => {
     return (
 
         <Ul>
             <Link to={`posts`}>Edit Posts</Link>
             <Link to={`users`}>Users</Link>
-            <Link to={`reg`}>Register New User</Link>
+            <Link to={`reg`}>Register New User ✅</Link>
             <Link to={`../home`}>User Home</Link>
-
+            <CurrentUser>Hali, <b>{user.name ? user.name : 'Miért vagy itt?!'}</b></CurrentUser>
         </Ul>
     )
 }

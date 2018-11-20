@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  {Router, Link} from 'react-stax'
+import { Router, Link } from 'react-stax'
 import './App.css';
 import styled from 'styled-components';
 import HomePage from './views/HomePage';
@@ -7,7 +7,7 @@ import AdminPage from "./views/AdminPage"
 import LoginPage from './views/LoginPage'
 
 const TopDevNav = styled.div`
-  background-color: #2f3542;
+  background-color: #1e272e;
   display: flex;
   justify-content: space-evenly;
   a{
@@ -16,7 +16,7 @@ const TopDevNav = styled.div`
     color: white;
     text-decoration: none;
     &:hover{
-      background-color: #57606f;
+      background-color: #2f3542;
     }
   }
 `;
@@ -27,16 +27,16 @@ class App extends Component {
     return (
       <div className="App">
 
-      <TopDevNav>
-        <Link to="admin">Admin</Link>
-        <Link to="home">Home</Link>
-      </TopDevNav>
-        <Router defaultPage="login">
-        <HomePage page="home"/>
-        <LoginPage page='login'/>
-        <AdminPage page="admin"/>
+        <TopDevNav>
+          <Link to="admin">Admin</Link>
+          <Link to="home">Home</Link>
+        </TopDevNav>
+        <Router defaultPage="home">
+          <HomePage page="home" />
+          <LoginPage page='login' />
+          <AdminPage page="admin" />
         </Router>
-        
+
       </div>
     );
   }
