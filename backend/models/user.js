@@ -1,77 +1,86 @@
-const db = require('./db')
-const { generateSalt, hash } = require('../utils/hash')
-const { throw400, checkDuplicates } = require('../utils/errors')
+const db = require("./db");
+const { generateSalt, hash } = require("../utils/hash");
+const { throw400, checkDuplicates } = require("../utils/errors");
 
-const collectionName = 'users'
+const collectionName = "users";
 
-async function search () {
+async function search() {
   return db
     .collection(collectionName)
     .find()
     .sort({ name: 1 })
     .project({ email: 1, name: 1 })
-    .toArray()
+    .toArray();
 }
 
-async function login ({ email, password }) {
-  const user = await db.collection(collectionName).findOne({ email })
+async function all() {
+  return db
+    .collection(collectionName)
+    .find()
+    .project({ email: 1, name: 1 })
+    .toArray();
+}
+
+async function login({ email, password }) {
+  const user = await db.collection(collectionName).findOne({ email });
 
   if (!user) {
     throw400({
-      email: 'No matching email found'
-    })
+      email: "No matching email found"
+    });
   }
   if (user.password !== hash(password, user.salt)) {
     throw400({
-      password: 'Incorrect password'
-    })
+      password: "Incorrect password"
+    });
   }
 
   // do not include the password and salt in the response
-  user.password = undefined
-  user.salt = undefined
-  return user
+  user.password = undefined;
+  user.salt = undefined;
+  return user;
 }
 
-async function register ({ email, password, name, role }) {
+async function register({ email, password, name, role }) {
   // hash the user password before storing it
-  const salt = generateSalt()
-  password = hash(password, salt)
+  const salt = generateSalt();
+  password = hash(password, salt);
 
-  const user = { email, name, password, salt,  }
+  const user = { email, name, password, salt };
   await db
     .collection(collectionName)
     .insertOne(user)
     .catch(err =>
       checkDuplicates(err, {
-        email: 'This email is already taken'
+        email: "This email is already taken"
       })
-    )
+    );
 
   // do not include the password and salt in the response
-  user.password = undefined
-  user.salt = undefined
-  return user
+  user.password = undefined;
+  user.salt = undefined;
+  return user;
 }
 
-async function update (id, data) {
+async function update(id, data) {
   await db
     .collection(collectionName)
     .updateOne({ _id: id }, { $set: data })
     .catch(err =>
       checkDuplicates(err, {
-        email: 'This email is already taken'
+        email: "This email is already taken"
       })
-    )
-  return data
+    );
+  return data;
 }
 
 module.exports = {
-  get raw () {
-    return db.collection(collectionName)
+  get raw() {
+    return db.collection(collectionName);
   },
+  all,
   search,
   login,
   register,
   update
-}
+};
