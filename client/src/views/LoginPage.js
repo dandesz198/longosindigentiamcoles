@@ -28,6 +28,7 @@ class LoginPage extends Component{
           .then(function (response) {
             user.email = response.data.user.email;
             user.name = response.data.user.name;
+            user.isLoggedIn = true;
             console.log(user.email)
             console.log(user.name)
             console.log(user.isLoggedIn)

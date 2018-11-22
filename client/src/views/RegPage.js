@@ -32,10 +32,6 @@ class LoginPage extends Component{
         e.preventDefault();
         axios.post(`http://localhost:3005/api/register?email=${formValues.email}&password=${formValues.password}&role=admin&name=${formValues.name}`)
           .then(function (response) {
-            user.email = response.data.user.email;
-            user.name = response.data.user.name;
-            console.log(user.email)
-            console.log(user.name)
             console.log(response);
           })
           .catch(function (error) {

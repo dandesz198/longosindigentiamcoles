@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Sidenav from './../components/Admin/Sidenav'
 import styled from 'styled-components'
-import {Router, view} from 'react-stax';
+import {Router, view, route} from 'react-stax';
 import Posts from './../components/Admin/Posts'
 import Users from './../components/Admin/Users'
 import RegPage from './/RegPage'
@@ -16,13 +16,20 @@ const AdminWrapper = styled.div`
 
 class AdminPage extends Component{
 
-
+    onRoute(){
+        if(user.isLoggedIn){
+            return
+        }else{
+            route({to: 'login'})
+        }
+        
+    }
 
     render(){
         return(
             <AdminWrapper>
                 <Sidenav/>
-                <Router defaultPage="posts">
+                <Router defaultPage="posts" onRoute={this.onRoute}>
                     <Posts page='posts'/>
                     <Users page='users'/>
                     <RegPage page='reg'/>

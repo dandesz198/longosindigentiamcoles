@@ -1,6 +1,8 @@
 import {store} from 'react-stax';
 
-const user = store({});
+const user = store({
+    isLoggedIn: false
+});
 
 
 
