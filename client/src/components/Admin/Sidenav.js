@@ -45,9 +45,9 @@ const List = () => {
 
         <Ul>
             <Link to={`posts`}>Edit Posts</Link>
-            <Link to={`users`}>Users</Link>
-            <Link to={`reg`}>Register New User ✅</Link>
-            <Link to={`../home`}>User Home</Link>
+            <Link to={`newpost`}>New Post</Link>
+            <Link to={`reg`}>Register New User</Link>
+            
             <CurrentUser>Hali, <b>{user.name ? user.name : 'Miért vagy itt?!'}</b></CurrentUser>
         </Ul>
     )

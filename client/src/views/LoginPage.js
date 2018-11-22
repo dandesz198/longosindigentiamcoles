@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {store} from 'react-stax';
+import {store, route} from 'react-stax';
 import axios from 'axios';
 import user from './../stores/userStore';
 
@@ -33,6 +33,7 @@ class LoginPage extends Component{
             console.log(user.name)
             console.log(user.isLoggedIn)
             console.log(response);
+            route({to: 'admin'})
           })
           .catch(function (error) {
             console.log(error);
