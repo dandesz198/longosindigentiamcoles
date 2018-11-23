@@ -1,30 +1,42 @@
-import React from 'react';
-import Sidenav from './../components/Admin/Sidenav'
-import styled from 'styled-components'
-import {Router} from 'react-stax';
-import Posts from './../components/Admin/Posts'
-import Users from './../components/Admin/Users'
+import React, { Component } from "react";
+import Sidenav from "./../components/Admin/Sidenav";
+import styled from "styled-components";
+import { Router, view, route } from "react-stax";
+import Posts from "./../components/Admin/Posts";
+import NewPost from "./../components/Admin/NewPost";
+import Users from "./../components/Admin/Users";
+import RegPage from ".//RegPage";
+import user from "./../stores/userStore";
 
 const AdminWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 300px auto;
-    grid-template-rows: 100vh;
-
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-template-rows: 100vh;
 `;
 
+class AdminPage extends Component {
+  onRoute() {
+    if (user.isLoggedIn) {
+      return;
+    } else {
+      // route({to: 'login'})
+      return;
+    }
+  }
 
-const AdminPage = ()=>{
-    return(
-        <AdminWrapper>
-            <Sidenav/>
-            <Router defaultPage="posts">
-                <Posts page='posts'/>
-                <Users page='users'/>
-            </Router>
-        </AdminWrapper>
-        
-    )
+  render() {
+    return (
+      <AdminWrapper>
+        <Sidenav />
+        <Router defaultPage="posts" onRoute={this.onRoute}>
+          <Posts page="posts" />
+          <NewPost page="newpost" />
+          <Users page="users" />
+          <RegPage page="reg" />
+        </Router>
+      </AdminWrapper>
+    );
+  }
 }
 
-
-export default AdminPage;
+export default view(AdminPage);

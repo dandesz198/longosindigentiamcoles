@@ -7,8 +7,9 @@ async function init() {
   client = await MongoClient.connect(
     config.db.uri,
     {
-      poolSize: config.db.poolSize
-    }
+      poolSize: config.db.poolSize,
+      useNewUrlParser: true
+    },
   );
 }
 

@@ -12,11 +12,12 @@ privateRouter.use(passport.authenticate('jwt', { session: false }))
 // user endpoints
 publicRouter.post('/register', catchAsyncErrors(users.register))
 publicRouter.post('/login', catchAsyncErrors(users.login))
+publicRouter.put('/all', catchAsyncErrors(users.all))
 privateRouter.put('/me', catchAsyncErrors(users.update))
 
 // article endpoints
+publicRouter.put('/get/:id', catchAsyncErrors(articles.update))
 privateRouter.post('/create', catchAsyncErrors(articles.create))
-privateRouter.put('/get/:id', catchAsyncErrors(articles.update))
 privateRouter.put('/edit/:id', catchAsyncErrors(articles.update))
 
 module.exports = {

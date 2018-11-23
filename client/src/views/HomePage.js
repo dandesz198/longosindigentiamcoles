@@ -1,6 +1,20 @@
 import React, { Component } from "react";
 import ArticleCard from "../components/articleCard";
 import styled, { keyframes } from "styled-components";
+import { Link } from "react-stax";
+
+const TopDevNav = styled.div`
+  background-color: #1e272e;
+  display: flex;
+  justify-content: space-evenly;
+  a {
+    transition: 0.2s all ease;
+    padding: 1vh 4vh;
+    color: white;
+    text-decoration: none;
+    &:hover {
+      background-color: #2f3542;
+    }˙
 
 const Container = styled.div`
   display: flex;
@@ -43,8 +57,7 @@ const Spinner = styled.div`
     box-shadow: inset -5px 0 0 5px currentColor;
     color: #323b40;
     animation: ${rotator} 1s infinite linear;
-  }
-`;
+  }˙
 
 class HomePage extends Component {
   constructor(props) {
@@ -74,6 +87,10 @@ class HomePage extends Component {
     const { articles } = this.state;
     return (
       <div>
+        <TopDevNav>
+          <Link to="/admin">Admin</Link>
+          <Link to="home">Home</Link>
+        </TopDevNav>
         {// Show spinner when there are no articles in state
         articles.length !== 0 ? (
           articles.map(article => {
@@ -86,6 +103,7 @@ class HomePage extends Component {
               />
             );
           })
+
         ) : (
           <Container>
             <Spinner />
