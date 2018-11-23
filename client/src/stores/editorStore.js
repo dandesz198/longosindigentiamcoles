@@ -1,10 +1,11 @@
 import { store } from "react-stax";
 import user from "./userStore";
 
-const draft = store({
+const editor = store({
   postID: Number,
-  updatedContent: "",
-  author: user.name
+  author: user.name,
+  title: '',
+  content: ''
 });
 
-export default draft;
+export default editor;

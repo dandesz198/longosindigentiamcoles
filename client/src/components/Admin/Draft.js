@@ -2,9 +2,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import React from "react";
 import testPost from "./../../stores/postStore";
-import { store } from "react-stax";
+import { view } from "react-stax";
 import styled from "styled-components";
 import axios from "axios";
+import editorStore from '../../stores/editorStore'
 
 const TitleEdit = styled.div`
   padding: 6vh;
@@ -33,44 +34,45 @@ class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = { theme: "snow" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
-  edited = testPost[Number(getQueryVariable("id"))];
-  store = store({
-    content: this.edited.content,
-    title: this.edited.title,
-    postID: this.edited.postID
-  });
 
-  handleSubmit(e) {
+  componentDidMount() {
+    const edited = testPost[Number(getQueryVariable("id"))];
+    editorStore.title = edited.title
+    editorStore.content = edited.content
+    editorStore.postID = edited.postID
+    editorStore.author = edited.author
+  }
+
+
+  handleSubmit = e => {
     e.preventDefault();
     axios
       .put(
         `http://localhost:3005/api/article?content=${
-          this.store.content
-        }&title=${this.store.title}&postID=${this.store.postID}&author=${
-          this.store.author
-        }`
+        editorStore.content
+        }&title=${editorStore.title}`
       )
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
 
-  handleChange(html) {
-    this.store.content = html;
+  handleChange = (html) => {
+    editorStore.content = html;
   }
 
-  handleTitleChange(evt) {
-    this.store.title = evt.target.value;
+  handleTitleChange = (evt) => {
+    editorStore.title = evt.target.value;
     console.log(evt.target.value);
   }
 
   render() {
+    console.log('rendering draftjs')
+    const { title, content } = editorStore
     return (
       <div>
         <TitleEdit>
@@ -79,17 +81,17 @@ class Editor extends React.Component {
             type="text"
             name="title"
             onChange={this.handleTitleChange}
-            value={this.edited.title}
+            value={title}
           />
         </TitleEdit>
         <ReactQuill
           theme={this.state.theme}
           onChange={this.handleChange}
-          value={this.store.content}
+          value={content}
           modules={Editor.modules}
           formats={Editor.formats}
           bounds={".app"}
-          placeholder={this.store.content}
+          placeholder={content}
         />
         <input type="submit" onSubmit={this.handleSubmit} />
       </div>
@@ -139,4 +141,4 @@ Editor.formats = [
   "indent",
   "link"
 ];
-export default Editor;
+export default view(Editor);
