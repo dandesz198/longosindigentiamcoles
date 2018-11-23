@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Sidenav from "./../components/Admin/Sidenav";
 import styled from "styled-components";
-import { Router, view, route } from "react-stax";
+// import { Router, view, route } from "react-stax";
+import { Router, view } from "react-stax";
 import Posts from "./../components/Admin/Posts";
 import NewPost from "./../components/Admin/NewPost";
 import Users from "./../components/Admin/Users";

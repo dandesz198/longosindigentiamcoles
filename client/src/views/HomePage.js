@@ -14,8 +14,9 @@ const TopDevNav = styled.div`
     text-decoration: none;
     &:hover {
       background-color: #2f3542;
-    }˙
-
+    }
+  }
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,7 +58,8 @@ const Spinner = styled.div`
     box-shadow: inset -5px 0 0 5px currentColor;
     color: #323b40;
     animation: ${rotator} 1s infinite linear;
-  }˙
+  }
+`;
 
 class HomePage extends Component {
   constructor(props) {
@@ -103,7 +105,6 @@ class HomePage extends Component {
               />
             );
           })
-
         ) : (
           <Container>
             <Spinner />

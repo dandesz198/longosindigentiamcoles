@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Router, Link, store } from "react-stax";
+import { Router, Link, route } from "react-stax";
 import "./App.css";
 import HomePage from "./views/HomePage";
 import AdminPage from "./views/AdminPage";
 import LoginPage from "./views/LoginPage";
 import ArticlePage from "./views/ArticlePage";
-import styled from "styled-components";
-
+// import styled from "styled-components";
 
 class App extends Component {
   render() {
