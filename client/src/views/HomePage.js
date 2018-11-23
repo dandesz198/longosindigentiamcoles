@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import ArticleCard from "../components/articleCard";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-stax";
 
 const TopDevNav = styled.div`
@@ -13,9 +14,50 @@ const TopDevNav = styled.div`
     text-decoration: none;
     &:hover {
       background-color: #2f3542;
-    }
+    }˙
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const rotator = keyframes`
+  0% {
+    transform: rotate(-180deg);
+    box-shadow: inset -5px 0 0 5px currentColor;
+  }
+  50% {
+    transform: rotate(0deg);
+    box-shadow: inset -1px 0 0 1px currentColor;
+  }
+  100% {
+    transform: rotate(180deg);
+    box-shadow: inset -5px 0 0 5px currentColor;
   }
 `;
+
+const Spinner = styled.div`
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 64px;
+  height: 64px;
+  border-radius: 64px;
+  &:before {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+    content: " ";
+    clip: rect(0, 64px, 32px, 0);
+    box-shadow: inset -5px 0 0 5px currentColor;
+    color: #323b40;
+    animation: ${rotator} 1s infinite linear;
+  }˙
 
 class HomePage extends Component {
   constructor(props) {
@@ -26,11 +68,8 @@ class HomePage extends Component {
     this.getArticles = this.getArticles.bind(this);
   }
 
+  //Get articles before components mount
   componentWillMount() {
-    this.getArticles();
-  }
-
-  componentDidMount() {
     this.getArticles();
   }
 
@@ -38,19 +77,13 @@ class HomePage extends Component {
   // API but in the future it will get
   // it from the backend
   async getArticles() {
-    const API_URL =
-      "https://newsapi.org/v2/top-headlines?" +
-      "country=us&" +
-      "apiKey=c2e8566083484f9c91818a52ff2c148f";
+    const API_URL = "https://fake-articles.herokuapp.com/api/articles/";
     const response = await fetch(API_URL);
     const json = await response.json();
-    if (json.status === "ok") {
-      this.setState({ articles: json.articles });
-    }
+    this.setState({ articles: json });
   }
 
   render() {
-    this.getArticles();
     const { articles } = this.state;
     return (
       <div>
@@ -58,15 +91,23 @@ class HomePage extends Component {
           <Link to="/admin">Admin</Link>
           <Link to="home">Home</Link>
         </TopDevNav>
-        {articles ? (
-          articles.map(article => (
-            <div>
-              <h1>{article.title}</h1>
-              <p>{article.description}</p>
-            </div>
-          ))
+        {// Show spinner when there are no articles in state
+        articles.length !== 0 ? (
+          articles.map(article => {
+            return (
+              <ArticleCard
+                key={article.id}
+                id={article.id}
+                title={article.title}
+                description={article.description}
+              />
+            );
+          })
+
         ) : (
-          <div>loading..</div>
+          <Container>
+            <Spinner />
+          </Container>
         )}
       </div>
     );
