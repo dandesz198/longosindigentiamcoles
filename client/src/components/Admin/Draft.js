@@ -7,6 +7,12 @@ import styled from "styled-components";
 import axios from "axios";
 import editorStore from '../../stores/editorStore'
 
+const Button = styled.button`
+  border:none;
+  background-color: black;
+  color: white;
+`;
+
 const TitleEdit = styled.div`
   padding: 6vh;
   text-align: left;
@@ -49,7 +55,7 @@ class Editor extends React.Component {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:3005/api/article?content=${
+        `http://localhost:3005/api/article/edit?content=${
         editorStore.content
         }&title=${editorStore.title}`
       )
@@ -76,7 +82,6 @@ class Editor extends React.Component {
     return (
       <div>
         <TitleEdit>
-          <label htmlFor="title">Title:</label>
           <input
             type="text"
             name="title"
@@ -93,7 +98,7 @@ class Editor extends React.Component {
           bounds={".app"}
           placeholder={content}
         />
-        <input type="submit" onSubmit={this.handleSubmit} />
+        <Button onClick={this.handleSubmit}>Button</Button>
       </div>
     );
   }
