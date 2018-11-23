@@ -1,4 +1,22 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
+import {Link} from 'react-stax'
+
+const TopDevNav = styled.div`
+  background-color: #1e272e;
+  display: flex;
+  justify-content: space-evenly;
+  a{
+    transition: .2s all ease;
+    padding: 1vh 4vh;
+    color: white;
+    text-decoration: none;
+    &:hover{
+      background-color: #2f3542;
+    }
+  }
+`;
+
 
 class HomePage extends Component {
   constructor(props) {
@@ -37,6 +55,10 @@ class HomePage extends Component {
     const { articles } = this.state;
     return (
       <div>
+        <TopDevNav>
+          <Link to="/admin">Admin</Link>
+          <Link to="home">Home</Link>
+        </TopDevNav>
         {articles ? (
           articles.map(article => (
             <div>

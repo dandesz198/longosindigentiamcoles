@@ -1,10 +1,11 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import React from 'react';
-import draft from './../../stores/editorStore'
 import testPost from './../../stores/postStore';
 import {store} from 'react-stax'
 import styled from 'styled-components';
+import axios from 'axios'
+
 
 const TitleEdit = styled.div`
     padding:6vh;
@@ -23,7 +24,7 @@ function getQueryVariable(variable)
        var vars = query.split("&");
        for (var i=0;i<vars.length;i++) {
                var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
+               if(pair[0] === variable){return pair[1];}
        }
        return(false);
 }
@@ -38,9 +39,18 @@ class Editor extends React.Component {
       this.handleTitleChange = this.handleTitleChange.bind(this)
     }
     edited = testPost[Number(getQueryVariable('id'))];
-    store = store({content: this.edited.content, title: this.edited.title})
+    store = store({content: this.edited.content, title: this.edited.title, postID: this.edited.postID})
 
-    
+    handleSubmit (e) {
+      e.preventDefault();
+        axios.put(`http://localhost:3005/api/article?content=${this.store.content}&title=${this.store.title}&postID=${this.store.postID}&author=${this.store.author}`)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
 
     handleChange (html) {
         this.store.content = html;
@@ -69,6 +79,7 @@ class Editor extends React.Component {
             bounds={'.app'}
             placeholder={this.store.content}
            />
+          <input type='submit' onSubmit={this.handleSubmit}></input>
          </div>
 
        )
@@ -86,6 +97,7 @@ class Editor extends React.Component {
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{'list': 'ordered'}, {'list': 'bullet'}, 
        {'indent': '-1'}, {'indent': '+1'}],
+      [{'align': []}],
       ['link'],
       ['clean']
     ],

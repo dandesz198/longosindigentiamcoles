@@ -1,10 +1,9 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import React from 'react';
-import draft from './../../stores/editorStore'
-import testPost from './../../stores/postStore';
 import {store} from 'react-stax'
 import styled from 'styled-components';
+import axios from 'axios'
 
 const TitleEdit = styled.div`
     padding:6vh;
@@ -29,7 +28,16 @@ class NewPost extends React.Component {
     }
     store = store({content: '', title: ''})
 
-    
+    handleSubmit (e) {
+        e.preventDefault();
+          axios.post(`http://localhost:3005/api/article?content=${this.store.content}&title=${this.store.title}&postID=${this.store.postID}&author=${this.store.author}`)
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      }
 
     handleChange (html) {
         this.store.content = html;
@@ -58,6 +66,8 @@ class NewPost extends React.Component {
             bounds={'.app'}
             placeholder={this.store.content}
            />
+          <input type='submit' onSubmit={this.handleSubmit}></input>
+
          </div>
 
        )

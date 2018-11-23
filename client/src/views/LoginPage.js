@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
-import {store, route} from 'react-stax';
+import {store, route, Link} from 'react-stax';
 import axios from 'axios';
 import user from './../stores/userStore';
-
+import styled from 'styled-components'
 
 const formValues = store({
     email: String,
     password: String
 })
+
+const TopDevNav = styled.div`
+  background-color: #1e272e;
+  display: flex;
+  justify-content: space-evenly;
+  a{
+    transition: .2s all ease;
+    padding: 1vh 4vh;
+    color: white;
+    text-decoration: none;
+    &:hover{
+      background-color: #2f3542;
+    }
+  }
+`;
 
 class LoginPage extends Component{
 
@@ -45,6 +60,10 @@ class LoginPage extends Component{
 
         return(
             <div>
+                <TopDevNav>
+          <Link to="/admin">Admin</Link>
+          <Link to="home">Home</Link>
+        </TopDevNav>
                 <h1>Login Page</h1>
                 <form onSubmit={this.onSubmit}>
                     <label htmlFor='email' > email</label> <br />

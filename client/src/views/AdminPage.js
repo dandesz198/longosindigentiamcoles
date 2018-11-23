@@ -12,7 +12,7 @@ import user from './../stores/userStore'
 const AdminWrapper = styled.div`
     display: grid;
     grid-template-columns: 250px auto;
-    grid-template-rows: 94.5vh;
+    grid-template-rows: 100vh;
 `;
 
 class AdminPage extends Component{
@@ -21,7 +21,8 @@ class AdminPage extends Component{
         if(user.isLoggedIn){
             return
         }else{
-            route({to: 'login'})
+            // route({to: 'login'})
+            return
         }
         
     }

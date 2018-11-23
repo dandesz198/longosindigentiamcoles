@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {store} from 'react-stax';
 import axios from 'axios';
-import user from './../stores/userStore'
 
 
 const formValues = store({
