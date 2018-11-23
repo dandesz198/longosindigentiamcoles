@@ -6,7 +6,7 @@ import { Router, view, route } from "react-stax";
 import Posts from "./../components/Admin/Posts";
 import NewPost from "./../components/Admin/NewPost";
 import Users from "./../components/Admin/Users";
-import RegPage from ".//RegPage";
+import RegPage from "./RegPage";
 import user from "./../stores/userStore";
 
 const AdminWrapper = styled.div`
@@ -17,11 +17,7 @@ const AdminWrapper = styled.div`
 
 class AdminPage extends Component {
   onRoute() {
-    if (user.isLoggedIn) {
-      return;
-    } else {
-      route({to: 'login'})
-    }
+    !user.isLoggedIn && route({to: 'login'})
   }
 
   render() {
