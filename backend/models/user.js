@@ -65,7 +65,7 @@ async function register({ email, password, name, role }) {
 async function update(id, data) {
   await db
     .collection(collectionName)
-    .updateOne({ _id: id }, { $set: data })
+    .updateOne({ id: id }, { $set: data })
     .catch(err =>
       checkDuplicates(err, {
         email: "This email is already taken"

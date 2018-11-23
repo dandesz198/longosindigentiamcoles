@@ -18,7 +18,7 @@ passport.use(
 
 function jwtStrategy (jwtPayload, cb) {
   return userModel.raw
-    .findOne({ _id: ObjectId(jwtPayload._id) })
+    .findOne({ id: ObjectId(jwtPayload.id) })
     .then(user => cb(null, user))
     .catch(err => cb(err))
 }

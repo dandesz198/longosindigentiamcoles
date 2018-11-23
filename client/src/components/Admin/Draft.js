@@ -40,7 +40,7 @@ class Editor extends React.Component {
     const edited = testPost[Number(getQueryVariable("id"))];
     editorStore.title = edited.title
     editorStore.content = edited.content
-    editorStore.postID = edited.postID
+    editorStore.id = edited.id
     editorStore.author = edited.author
   }
 

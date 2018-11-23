@@ -29,13 +29,13 @@ const List = () => {
     <div>
       <ListWrapper>
         <p>
-          <span>PostID</span>
+          <span>id</span>
           <span>Author</span>
           <span>Title</span>
         </p>
         {testPost.map(post => (
-          <Link key={post.postID} to={`../editor/?id=${post.postID}`}>
-            <span>{post.postID}</span>
+          <Link key={post.id} to={`../editor/?id=${post.id}`}>
+            <span>{post.id}</span>
             <span>{post.author}</span>
             <span>{post.title}</span>
             <br />
