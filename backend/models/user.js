@@ -46,7 +46,7 @@ async function register({ email, password, name, role }) {
   const salt = generateSalt();
   password = hash(password, salt);
 
-  const user = { email, name, password, salt };
+  const user = { email, name, password, role, salt };
   await db
     .collection(collectionName)
     .insertOne(user)
