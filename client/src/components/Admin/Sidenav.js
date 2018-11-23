@@ -39,6 +39,7 @@ const CurrentUser = styled.div`
 `;
 
 const List = () => {
+    console.log(user)
   return (
     <Ul>
       <Link to={`posts`}>Edit Posts</Link>
@@ -46,7 +47,7 @@ const List = () => {
       <Link to={`reg`}>Register New User</Link>
 
       <CurrentUser>
-        Hali, <b>{user.name ? user.name : "Miért vagy itt?!"}</b>
+        Hali, <b>{user.name || "Miért vagy itt?!"}</b>
       </CurrentUser>
     </Ul>
   );

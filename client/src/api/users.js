@@ -4,6 +4,7 @@ import api from "./api";
 function processUser(data) {
   api.defaults.headers.Authorization = `Bearer ${data.token}`;
   storage.token = data.token;
+  console.log({ data: data.user })
   return data.user;
 }
 
