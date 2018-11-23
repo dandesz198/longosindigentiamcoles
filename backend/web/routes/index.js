@@ -10,10 +10,10 @@ const privateRouter = new Router()
 privateRouter.use(passport.authenticate('jwt', { session: false }))
 
 // user endpoints
-publicRouter.post('/user/register', catchAsyncErrors(users.register))
-publicRouter.post('/user/login', catchAsyncErrors(users.login))
-publicRouter.get('/user/all', catchAsyncErrors(users.all))
-privateRouter.put('/user/me', catchAsyncErrors(users.update))
+publicRouter.post('/register', catchAsyncErrors(users.register))
+publicRouter.post('/login', catchAsyncErrors(users.login))
+// privateRouter.delete('/user/edit/:id', catchAsyncErrors(users.edit))
+publicRouter.get('/users', catchAsyncErrors(users.all))
 privateRouter.delete('/user/delete/:id', catchAsyncErrors(users.delete))
 
 // article endpoints
