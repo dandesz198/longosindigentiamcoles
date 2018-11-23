@@ -26,7 +26,7 @@ class LoginPage extends Component {
     e.preventDefault();
     axios
       .post(
-        `http://localhost:3005/api/register?email=${
+        `http://localhost:3005/api/user/register?email=${
           formValues.email
         }&password=${formValues.password}&role=admin&name=${formValues.name}`
       )

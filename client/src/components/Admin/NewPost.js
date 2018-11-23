@@ -21,16 +21,14 @@ class NewPost extends React.Component {
   constructor(props) {
     super(props);
     this.state = { theme: "snow" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
   store = store({ content: "", title: "" });
 
-  handleSubmit(e) {
+  handleSubmit = e =>  {
     e.preventDefault();
     axios
       .post(
-        `http://localhost:3005/api/article?content=${
+        `http://localhost:3005/api/article/create?content=${
           this.store.content
         }&title=${this.store.title}`
       )
@@ -42,12 +40,13 @@ class NewPost extends React.Component {
       });
   }
 
-  handleChange(html) {
+  handleChange = html => {
     this.store.content = html;
+    console.log(html)
   }
 
-  handleTitleChange(evt) {
-    this.store.title = evt.target.value;
+  handleTitleChange = e => {
+    this.store.title = e.target.value;
     console.log(this.store.title);
   }
 
@@ -55,8 +54,7 @@ class NewPost extends React.Component {
     return (
       <div>
         <TitleEdit>
-          <label htmlFor="title">Title:</label>
-          <input type="text" name="title" onChange={this.handleTitleChange} />
+          <input type="text" name="title" placeholder="Title" onChange={this.handleTitleChange} />
         </TitleEdit>
         <ReactQuill
           theme={this.state.theme}
@@ -67,7 +65,7 @@ class NewPost extends React.Component {
           bounds={".app"}
           placeholder={this.store.content}
         />
-        <input type="submit" onSubmit={this.handleSubmit} />
+        <button onClick={this.handleSubmit} />
       </div>
     );
   }
@@ -89,6 +87,7 @@ NewPost.modules = {
       { indent: "+1" }
     ],
     ["link"],
+    [{'align': 'center'}],
     ["clean"]
   ],
   clipboard: {

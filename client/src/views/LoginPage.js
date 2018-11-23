@@ -38,7 +38,7 @@ class LoginPage extends Component {
     e.preventDefault();
     axios
       .post(
-        `http://localhost:3005/api/login?email=${formValues.email}&password=${
+        `http://localhost:3005/api/user/login?email=${formValues.email}&password=${
           formValues.password
         }`
       )
@@ -62,7 +62,7 @@ class LoginPage extends Component {
       <div>
         <TopDevNav>
           <Link to="/admin">Admin</Link>
-          <Link to="home">Home</Link>
+          <Link to="/home">Home</Link>
         </TopDevNav>
         <h1>Login Page</h1>
         <form onSubmit={this.onSubmit}>
