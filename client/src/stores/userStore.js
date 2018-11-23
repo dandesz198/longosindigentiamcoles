@@ -1,13 +1,7 @@
-import {store} from 'react-stax';
+import { store } from "react-stax";
 
 const user = store({
-    isLoggedIn: false
+  isLoggedIn: false
 });
-
-
-
-
-
-
 
 export default user;

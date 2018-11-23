@@ -1,22 +1,21 @@
 import React, { Component } from "react";
-import styled from 'styled-components';
-import {Link} from 'react-stax'
+import styled from "styled-components";
+import { Link } from "react-stax";
 
 const TopDevNav = styled.div`
   background-color: #1e272e;
   display: flex;
   justify-content: space-evenly;
-  a{
-    transition: .2s all ease;
+  a {
+    transition: 0.2s all ease;
     padding: 1vh 4vh;
     color: white;
     text-decoration: none;
-    &:hover{
+    &:hover {
       background-color: #2f3542;
     }
   }
 `;
-
 
 class HomePage extends Component {
   constructor(props) {
