@@ -12,13 +12,15 @@ privateRouter.use(passport.authenticate('jwt', { session: false }))
 // user endpoints
 publicRouter.post('/register', catchAsyncErrors(users.register))
 publicRouter.post('/login', catchAsyncErrors(users.login))
-publicRouter.put('/all', catchAsyncErrors(users.all))
-privateRouter.put('/me', catchAsyncErrors(users.update))
+// privateRouter.delete('/user/edit/:id', catchAsyncErrors(users.edit))
+publicRouter.get('/users', catchAsyncErrors(users.all))
+privateRouter.delete('/user/delete/:id', catchAsyncErrors(users.delete))
 
 // article endpoints
-publicRouter.put('/get/:id', catchAsyncErrors(articles.update))
-privateRouter.post('/create', catchAsyncErrors(articles.create))
-privateRouter.put('/edit/:id', catchAsyncErrors(articles.update))
+privateRouter.post('/article/create', catchAsyncErrors(articles.create))
+publicRouter.get('/article/get', catchAsyncErrors(articles.getAll))
+publicRouter.get('/article/get:id', catchAsyncErrors(articles.getById))
+privateRouter.delete('/article/delete/:id', catchAsyncErrors(articles.delete))
 
 module.exports = {
   public: publicRouter,

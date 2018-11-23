@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { store } from "react-stax";
-import axios from "axios";
+import {register} from "./../api/users";
 
 const formValues = store({
   email: String,
+  role: 'admin',
   password: String
 });
 
@@ -24,18 +25,8 @@ class LoginPage extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    axios
-      .post(
-        `http://localhost:3005/api/register?email=${
-          formValues.email
-        }&password=${formValues.password}&role=admin&name=${formValues.name}`
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    const {name, password, email, role} = formValues;
+    register({ email, password, name, role })
   };
 
   render() {

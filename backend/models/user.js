@@ -74,6 +74,13 @@ async function update(id, data) {
   return data;
 }
 
+async function deleteById(id) {
+  await db
+    .collection(collectionName)
+    .remove({ id: id })
+  return 'Success!';
+}
+
 module.exports = {
   get raw() {
     return db.collection(collectionName);
@@ -82,5 +89,6 @@ module.exports = {
   search,
   login,
   register,
-  update
+  update,
+  deleteById
 };
