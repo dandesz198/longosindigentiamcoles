@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-stax";
+import { Link, Router } from "react-stax";
+import articleStore from '../stores/articleStore'
 
 const Container = styled.div`
   width: 50%;
@@ -42,7 +43,7 @@ class ArticleCard extends Component {
       <Container>
         <Title>{this.props.title}</Title>
         <Paragraph>{this.props.description || "[No description]"}</Paragraph>
-        <Button to={"/articles/?id=" + this.props.id}>Read more</Button>
+          <Button to={"/articles/?id=" + this.props.id} >Read more</Button>
       </Container>
     );
   }

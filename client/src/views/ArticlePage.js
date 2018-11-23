@@ -1,40 +1,24 @@
 import React, { Component } from "react";
-import { params } from "react-stax";
+import { params, view } from "react-stax";
+import articleStore from '../stores/articleStore'
 
-class ArticlePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-      title: ""
-    };
-    this.getArticle = this.getArticle.bind(this);
-  }
-  async getArticle() {
-    const id = params.id;
-    const API_URL = "https://fake-articles.herokuapp.com/api/articles/";
-    const response = await fetch(API_URL);
-    const json = await response.json();
-    json.forEach(article => {
-      if (article.id === id) {
-        this.setState({ title: article.title, text: article.text });
-      }
-    });
-    this.setState({ articles: json });
-  }
-
-  componentWillMount() {
-    this.getArticle();
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>{this.state.title}</h1>
-        <p>{this.state.text}</p>
-      </div>
-    );
-  }
+const selectArticle = () => {
+  const id = params.id
+  articleStore.articles.forEach(e => {
+    console.log(e.id);
+    if(e.id === id) {
+      return articleStore.articles.indexOf(e)
+    }
+  });
 }
 
-export default ArticlePage;
+const index = 0
+console.log(articleStore);
+
+
+export default view(() => (
+      <div>
+        <h1>{articleStore.articles[index].title}</h1>
+        <p>{articleStore.articles[index].text}</p>
+      </div>
+));
