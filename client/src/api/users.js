@@ -4,19 +4,18 @@ import api from "./api";
 function processUser(data) {
   api.defaults.headers.Authorization = `Bearer ${data.token}`;
   storage.token = data.token;
-  console.log({ data: data.user })
   return data.user;
 }
 
-export async function login({ email, password }) {
-  const { data } = await api.post(`/login?email=${email}&password=${password}`);
+// body: { email, password }
+export async function login(body) {
+  const { data } = await api.post(`/login`, body);
   return processUser(data);
 }
 
-export async function register({ email, password, name, role }) {
-  const { data } = await api.post(
-    `/register?email=${email}&password=${password}&name=${name}&role=${role}`
-  );
+// body: { email, password, name, role }
+export async function register(body) {
+  const { data } = await api.post("/register", body);
   return processUser(data);
 }
 
