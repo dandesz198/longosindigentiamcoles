@@ -22,7 +22,6 @@ export function logout() {
   delete storage.token
 }
 
-
 export async function list() {
   const { data } = await api.get('/users')
   return data
