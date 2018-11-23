@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ArticleCard from "../components/articleCard";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-stax";
+import articleStore from '../stores/articleStore'
+
 
 const TopDevNav = styled.div`
   background-color: #1e272e;
@@ -62,31 +64,8 @@ const Spinner = styled.div`
 `;
 
 class HomePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: []
-    };
-    this.getArticles = this.getArticles.bind(this);
-  }
-
-  //Get articles before components mount
-  componentWillMount() {
-    this.getArticles();
-  }
-
-  // Fetch Articles for now this uses a
-  // API but in the future it will get
-  // it from the backend
-  async getArticles() {
-    const API_URL = "https://fake-articles.herokuapp.com/api/articles/";
-    const response = await fetch(API_URL);
-    const json = await response.json();
-    this.setState({ articles: json });
-  }
-
   render() {
-    const { articles } = this.state;
+    const { articles } = articleStore.article;
     return (
       <div>
         <TopDevNav>
