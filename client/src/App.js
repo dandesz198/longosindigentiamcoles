@@ -11,10 +11,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router defaultPage="login">
+        <Router defaultPage="home">
           <HomePage page="home" />
           <LoginPage page="login" />
-          <AdminPage page="admin" onRoute={route({ to: "login" })} />
+          <AdminPage page="admin" />
           <ArticlePage page="articles" />
         </Router>
       </div>
