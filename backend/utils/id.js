@@ -1,4 +1,4 @@
-export function generate(length) {
+function generate(length) {
   var text = "";
   var possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -8,3 +8,5 @@ export function generate(length) {
 
   return text;
 }
+
+module.exports = { generate }
