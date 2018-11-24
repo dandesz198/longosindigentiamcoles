@@ -65,7 +65,7 @@ const Spinner = styled.div`
 
 class HomePage extends Component {
   render() {
-    const { articles } = articleStore.article;
+    const  { articles } = articleStore;
     return (
       <div>
         <TopDevNav>
