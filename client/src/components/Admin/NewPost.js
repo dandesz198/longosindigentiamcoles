@@ -3,8 +3,7 @@ import "react-quill/dist/quill.snow.css";
 import React from "react";
 import { store } from "react-stax";
 import styled from "styled-components";
-import axios from "axios";
-
+import {create} from './../../api/article'
 const TitleEdit = styled.div`
   padding: 6vh;
   box-sizing: border-box;
@@ -26,18 +25,7 @@ class NewPost extends React.Component {
 
   handleSubmit = e =>  {
     e.preventDefault();
-    axios
-      .post(
-        `http://localhost:3005/api/article/create?content=${
-          this.store.content
-        }&title=${this.store.title}`
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    create(store)
   }
 
   handleChange = html => {
@@ -65,7 +53,7 @@ class NewPost extends React.Component {
           bounds={".app"}
           placeholder={this.store.content}
         />
-        <button onClick={this.handleSubmit} />
+        <button onClick={this.handleSubmit}>Create Article</button>
       </div>
     );
   }

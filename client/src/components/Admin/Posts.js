@@ -3,6 +3,9 @@ import Draft from "./Draft";
 import { Router, Link } from "react-stax";
 import testPost from "./../../stores/postStore";
 import styled from "styled-components";
+import {getAll} from "./../../api/article";
+
+
 
 const ListWrapper = styled.div`
   a,
