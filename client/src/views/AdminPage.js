@@ -4,7 +4,7 @@ import styled from "styled-components";
 // import { Router, view, route } from "react-stax";
 import { Router, view, route } from "react-stax";
 import Posts from "./../components/Admin/Posts";
-import NewPost from "./../components/Admin/NewPost";
+import NewArticle from "./../components/Admin/NewArticle";
 import Users from "./../components/Admin/Users";
 import RegPage from "./RegPage";
 import user from "./../stores/userStore";
@@ -26,7 +26,7 @@ class AdminPage extends Component {
         <Sidenav />
         <Router defaultPage="posts" onRoute={this.onRoute}>
           <Posts page="posts" />
-          <NewPost page="newpost" />
+          <NewArticle page="newarticle" />
           <Users page="users" />
           <RegPage page="reg" />
         </Router>

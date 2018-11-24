@@ -3,7 +3,7 @@ import "react-quill/dist/quill.snow.css";
 import React from "react";
 import { store } from "react-stax";
 import styled from "styled-components";
-import {create} from './../../api/article'
+import {create} from '../../api/article'
 const TitleEdit = styled.div`
   padding: 6vh;
   box-sizing: border-box;
@@ -11,12 +11,14 @@ const TitleEdit = styled.div`
   font-size: 2rem;
   width: 100%;
   input {
+    width: 100%;
     font-size: 2rem;
+    text-align: center;
     border: none !important;
   }
 `;
 
-class NewPost extends React.Component {
+class NewArticle extends React.Component {
   constructor(props) {
     super(props);
     this.state = { theme: "snow" };
@@ -42,14 +44,14 @@ class NewPost extends React.Component {
     return (
       <div>
         <TitleEdit>
-          <input type="text" name="title" placeholder="Title" onChange={this.handleTitleChange} />
+          <input maxLength='50' type="text" name="title" placeholder="Title" onChange={this.handleTitleChange} />
         </TitleEdit>
         <ReactQuill
           theme={this.state.theme}
           onChange={this.handleChange}
           value={this.store.content}
-          modules={NewPost.modules}
-          formats={NewPost.formats}
+          modules={NewArticle.modules}
+          formats={NewArticle.formats}
           bounds={".app"}
           placeholder={this.store.content}
         />
@@ -60,10 +62,10 @@ class NewPost extends React.Component {
 }
 
 /*
- * Quill modules to attach to NewPost
+ * Quill modules to attach to NewArticle
  * See https://quilljs.com/docs/modules/ for complete options
  */
-NewPost.modules = {
+NewArticle.modules = {
   toolbar: [
     [{ header: "1" }, { header: "2" }, { font: [] }],
     [{ size: [] }],
@@ -84,10 +86,10 @@ NewPost.modules = {
   }
 };
 /*
- * Quill NewPost formats
+ * Quill NewArticle formats
  * See https://quilljs.com/docs/formats/
  */
-NewPost.formats = [
+NewArticle.formats = [
   "header",
   "font",
   "size",
@@ -101,4 +103,4 @@ NewPost.formats = [
   "indent",
   "link"
 ];
-export default NewPost;
+export default NewArticle;
