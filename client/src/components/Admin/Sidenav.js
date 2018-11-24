@@ -30,6 +30,7 @@ const Ul = styled.div`
 
 const CurrentUser = styled.div`
   position: absolute;
+  font-size: 1.1rem;
   bottom: 0;
   padding: 1rem;
   width: 100%;

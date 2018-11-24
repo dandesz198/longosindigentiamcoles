@@ -17,15 +17,15 @@ const AdminWrapper = styled.div`
 
 class AdminPage extends Component {
   onRoute() {
-    !user.isLoggedIn && route({to: 'login'})
+     // !user.isLoggedIn && route({to: 'login'})
   }
 
   render() {
     return (
       <AdminWrapper>
         <Sidenav />
-        <Router defaultPage="posts" onRoute={this.onRoute}>
-          <Posts page="posts" />
+        <Router defaultPage="articles" onRoute={this.onRoute}>
+          <Posts page="articles" />
           <NewArticle page="newarticle" />
           <Users page="users" />
           <RegPage page="reg" />

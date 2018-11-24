@@ -1,27 +1,62 @@
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 import React from "react";
 import { store } from "react-stax";
 import styled from "styled-components";
 import {create} from '../../api/article'
+
+const Button = styled.button`
+  border: none;
+  background-color: #57606f;
+  width: 100%;
+  padding: 1rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: .2s ease background-color;
+  position: absolute;
+  bottom:0;
+  left:0;
+  &:hover{
+    background-color: #747d8c;
+  }
+`;
+
 const TitleEdit = styled.div`
   padding: 6vh;
   box-sizing: border-box;
   text-align: left;
-  font-size: 2rem;
   width: 100%;
   input {
     width: 100%;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: #2f3542;
     text-align: center;
     border: none !important;
   }
 `;
+const Wrapper = styled.div`
+  position: relative;
+  height: 100%;
+  
+  .ql-editor{
+    height: 70vh;
+    width: 100%;
+    text-align: center !important;
+    font-size: 1.3rem;    
+    color: #57606f;
+    h1{
+      color: #2f2f2f;
+    }
+}
+`;
+
 
 class NewArticle extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { theme: "snow" };
+    this.state = { theme: "bubble" };
   }
   store = store({ content: "", title: "" });
 
@@ -42,7 +77,8 @@ class NewArticle extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
+        <Button onClick={this.handleSubmit}>Create Article</Button>
         <TitleEdit>
           <input maxLength='50' type="text" name="title" placeholder="Title" onChange={this.handleTitleChange} />
         </TitleEdit>
@@ -53,10 +89,9 @@ class NewArticle extends React.Component {
           modules={NewArticle.modules}
           formats={NewArticle.formats}
           bounds={".app"}
-          placeholder={this.store.content}
+          placeholder=""
         />
-        <button onClick={this.handleSubmit}>Create Article</button>
-      </div>
+      </Wrapper>
     );
   }
 }
@@ -67,7 +102,7 @@ class NewArticle extends React.Component {
  */
 NewArticle.modules = {
   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ header: "2" }, { font: [] }],
     [{ size: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
     [
