@@ -18,8 +18,8 @@ privateRouter.delete('/user/delete/:id', catchAsyncErrors(users.delete))
 
 // article endpoints
 privateRouter.post('/article/create', catchAsyncErrors(articles.create))
-publicRouter.get('/article/get', catchAsyncErrors(articles.getAll))
-publicRouter.get('/article/get:id', catchAsyncErrors(articles.getById))
+publicRouter.get('/article/all', catchAsyncErrors(articles.getAll))
+publicRouter.get('/article/:id', catchAsyncErrors(articles.getById))
 privateRouter.delete('/article/delete/:id', catchAsyncErrors(articles.delete))
 
 module.exports = {

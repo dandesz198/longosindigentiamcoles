@@ -13,12 +13,12 @@ export async function update(id, body) {
 }
 
 export async function getAll() {
-  const { data } = await api.get("/article/get");
+  const { data } = await api.get("/article/all");
   return data;
 }
 
 export async function get(id) {
-  const { data } = await api.get(`/article/get/${id}`);
+  const { data } = await api.get(`/article/${id}`);
   return data;
 }
 

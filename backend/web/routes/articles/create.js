@@ -1,5 +1,6 @@
 const articleModel = require('../../../models/article')
 
-module.exports = async function all (req, res) {
-  res.send(await articleModel.all())
+module.exports = async function create (req, res) {
+  const article = await articleModel.create(req.body)
+  res.send(article)
 }
