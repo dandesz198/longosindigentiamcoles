@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { store, route, Link } from "react-stax";
-import axios from "axios";
 import user from "./../stores/userStore";
 import styled from "styled-components";
 import { login } from './../api/users'

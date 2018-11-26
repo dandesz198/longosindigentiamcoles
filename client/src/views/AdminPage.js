@@ -7,7 +7,6 @@ import Posts from "./../components/Admin/Posts";
 import NewArticle from "./../components/Admin/NewArticle";
 import Users from "./../components/Admin/Users";
 import RegPage from "./RegPage";
-import user from "./../stores/userStore";
 
 const AdminWrapper = styled.div`
   display: grid;

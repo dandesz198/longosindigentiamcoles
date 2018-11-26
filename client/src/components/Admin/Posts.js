@@ -1,10 +1,8 @@
 import React from "react";
 import Draft from "./Draft";
 import { Router, Link } from "react-stax";
-import testPost from "./../../stores/postStore";
 import styled from "styled-components";
-import {getAll} from "./../../api/article";
-
+import article from './../../stores/articleStore'
 
 
 const ListWrapper = styled.div`
@@ -36,7 +34,7 @@ const List = () => {
           <span>Author</span>
           <span>Title</span>
         </p>
-        {testPost.map(post => (
+        {article.articles.map(post => (
           <Link key={post.id} to={`../editor/?id=${post.id}`}>
             <span>{post.id}</span>
             <span>{post.author}</span>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link, Router } from "react-stax";
-import articleStore from '../stores/articleStore'
+import { Link} from "react-stax";
 
 const Container = styled.div`
   width: 50%;

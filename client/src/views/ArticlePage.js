@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { params, view } from "react-stax";
 import articleStore from '../stores/articleStore'
 
