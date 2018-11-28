@@ -58,4 +58,16 @@ class ResModal extends React.Component{
 }
 
 
+
+const trigger = function (error) {
+    if (error.response) {
+      if(error.response.data.email){
+        modalStore.show(error.response.data.email, 'Something Is Not Correct')
+      }else if(error.response.data.password){
+        modalStore.show(error.response.data.password, 'Something Is Not Correct')
+      }
+    }
+  }
+
 export default view(ResModal)
+export {trigger};

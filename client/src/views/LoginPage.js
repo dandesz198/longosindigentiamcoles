@@ -9,6 +9,40 @@ const formValues = store({
     password: String
 });
 
+const Wrapper = styled.div`
+    color:  #2f3542;
+    height: 100vh;
+    overflow:hidden;
+    form{
+        h1{
+            margin-top: 0;
+        }
+        position: absolute;
+        margin: auto;
+        height: 200px;
+        top: 0;
+        bottom: 30vh;
+        left: 0;
+        right: 0;
+        input[type='text'], input[type='password']{
+            border: 2px solid #2f3542;
+            padding: 1vh;
+            margin-bottom: 1rem;
+        }
+        input[type='submit']{
+            border: none;
+            background-color: #2f3542;
+            color: white;
+            padding: 1vh;
+            border-radius: 30px;
+            transition: .2s ease background-color;
+            &:hover{
+                background-color: #747d8c;
+            }
+        }
+    }
+`;
+
 const TopDevNav = styled.div`
   background-color: #1e272e;
   display: flex;
@@ -23,6 +57,9 @@ const TopDevNav = styled.div`
     }
   }
 `;
+
+
+
 
 class LoginPage extends Component {
     handleChangeEmail = e => {
@@ -49,30 +86,34 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div>
+            <Wrapper>
                 <TopDevNav>
                     <Link to="/admin">Admin</Link>
                     <Link to="/home">Home</Link>
                 </TopDevNav>
-                <h1>Login Page</h1>
                 <form onSubmit={this.onSubmit}>
-                    <label htmlFor="email"> email</label> <br />
+                    <h1>Log In</h1>
+                    <label htmlFor="email"> Email Address</label> <br />
                     <input
                         type="text"
-                        placeholder="email"
+                        placeholder="example@domain.com"
+                        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                        required
                         onChange={this.handleChangeEmail}
                     />{" "}
                     <br />
                     <label htmlFor="password">Password</label> <br />
                     <input
                         type="password"
-                        placeholder="Password"
+                        placeholder="yourpassword142"
+                        required
                         onChange={this.handleChangePassword}
                     />{" "}
                     <br />
                     <input type="submit" />
                 </form>
-            </div>
+            </Wrapper>
+
         );
     }
 }

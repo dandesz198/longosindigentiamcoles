@@ -43,7 +43,7 @@ const List = () => {
     console.log(user)
   return (
     <Ul>
-      <Link to={`posts`}>Articles</Link>
+      <Link to={`articles`}>Articles</Link>
       <Link to={`newarticle`}>New Article</Link>
       <Link to={`reg`}>Register New User</Link>
 
