@@ -5,10 +5,10 @@ import testPost from "../../stores/modalStore";
 import { view } from "react-stax";
 import styled from "styled-components";
 import axios from "axios";
-import editorStore from '../../stores/editorStore'
+import editorStore from "../../stores/editorStore";
 
 const Button = styled.button`
-  border:none;
+  border: none;
   background-color: black;
   color: white;
 `;
@@ -44,41 +44,38 @@ class Editor extends React.Component {
 
   componentDidMount() {
     const edited = testPost[Number(getQueryVariable("id"))];
-    editorStore.title = edited.title
-    editorStore.content = edited.content
-    editorStore.id = edited.id
-    editorStore.author = edited.author
+    editorStore.title = edited.title;
+    editorStore.content = edited.content;
+    editorStore.id = edited.id;
+    editorStore.author = edited.author;
   }
-
 
   handleSubmit = e => {
     e.preventDefault();
     axios
       .put(
         `http://localhost:3005/api/article/edit?content=${
-        editorStore.content
+          editorStore.content
         }&title=${editorStore.title}`
       )
-      .then(function (response) {
+      .then(function(response) {
         console.log(response);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
-  }
+  };
 
-  handleChange = (html) => {
+  handleChange = html => {
     editorStore.content = html;
-  }
+  };
 
-  handleTitleChange = (evt) => {
+  handleTitleChange = evt => {
     editorStore.title = evt.target.value;
-    console.log(evt.target.value);
-  }
+  };
 
   render() {
-    console.log('rendering draftjs')
-    const { title, content } = editorStore
+    const { title, content } = editorStore;
     return (
       <div>
         <TitleEdit>

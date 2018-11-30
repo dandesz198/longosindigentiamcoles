@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-stax";
 import user from "./../../stores/userStore";
 
-const Ul = styled.div`
+const StyledContainer = styled.div`
   list-style-type: none;
   padding: 0;
   position: relative;
@@ -40,9 +40,8 @@ const CurrentUser = styled.div`
 `;
 
 const List = () => {
-    console.log(user)
   return (
-    <Ul>
+    <StyledContainer>
       <Link to={`articles`}>Articles</Link>
       <Link to={`newarticle`}>New Article</Link>
       <Link to={`reg`}>Register New User</Link>
@@ -50,7 +49,7 @@ const List = () => {
       <CurrentUser>
         Hali, <b>{user.name || "Miért vagy itt?!"}</b>
       </CurrentUser>
-    </Ul>
+    </StyledContainer>
   );
 };
 

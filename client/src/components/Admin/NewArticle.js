@@ -3,7 +3,7 @@ import "react-quill/dist/quill.bubble.css";
 import React from "react";
 import { store } from "react-stax";
 import styled from "styled-components";
-import {create} from '../../api/article'
+import { create } from "../../api/article";
 
 const Button = styled.button`
   border: none;
@@ -14,11 +14,11 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: bold;
   font-size: 1.1rem;
-  transition: .2s ease background-color;
+  transition: 0.2s ease background-color;
   position: absolute;
-  bottom:0;
-  left:0;
-  &:hover{
+  bottom: 0;
+  left: 0;
+  &:hover {
     background-color: #747d8c;
   }
 `;
@@ -39,19 +39,18 @@ const TitleEdit = styled.div`
 const Wrapper = styled.div`
   position: relative;
   height: 100%;
-  
-  .ql-editor{
+
+  .ql-editor {
     height: 70vh;
     width: 100%;
     text-align: center !important;
-    font-size: 1.3rem;    
+    font-size: 1.3rem;
     color: #57606f;
-    h1{
+    h1 {
       color: #2f2f2f;
     }
-}
+  }
 `;
-
 
 class NewArticle extends React.Component {
   constructor(props) {
@@ -60,27 +59,31 @@ class NewArticle extends React.Component {
   }
   store = store({ content: "", title: "" });
 
-  handleSubmit = e =>  {
+  handleSubmit = e => {
     e.preventDefault();
-    create(store)
-  }
+    create(store);
+  };
 
   handleChange = html => {
     this.store.content = html;
-    console.log(html)
-  }
+  };
 
   handleTitleChange = e => {
     this.store.title = e.target.value;
-    console.log(this.store.title);
-  }
+  };
 
   render() {
     return (
       <Wrapper>
         <Button onClick={this.handleSubmit}>Create Article</Button>
         <TitleEdit>
-          <input maxLength='50' type="text" name="title" placeholder="Title" onChange={this.handleTitleChange} />
+          <input
+            maxLength="50"
+            type="text"
+            name="title"
+            placeholder="Title"
+            onChange={this.handleTitleChange}
+          />
         </TitleEdit>
         <ReactQuill
           theme={this.state.theme}
@@ -112,7 +115,7 @@ NewArticle.modules = {
       { indent: "+1" }
     ],
     ["link"],
-    [{'align': 'center'}],
+    [{ align: "center" }],
     ["clean"]
   ],
   clipboard: {

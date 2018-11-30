@@ -26,12 +26,12 @@ async function login({ email, password }) {
 
   if (!user) {
     throw400({
-      email: "No matching email found"
+      msg: "No matching email found"
     });
   }
   if (user.password !== hash(password, user.salt)) {
     throw400({
-      password: "Incorrect password"
+      msg: "Incorrect password"
     });
   }
 

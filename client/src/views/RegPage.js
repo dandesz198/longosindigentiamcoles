@@ -48,16 +48,13 @@ const formValues = store({
 class LoginPage extends Component {
   handleChangeEmail = e => {
     formValues.email = e.target.value;
-    console.log(formValues.email);
   };
   handleChangePassword = e => {
     formValues.password = e.target.value;
-    console.log(formValues.password);
   };
 
   handleChangeName = e => {
     formValues.name = e.target.value;
-    console.log(formValues.name);
   };
 
   onSubmit = e => {

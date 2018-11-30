@@ -1,7 +1,7 @@
 import { storage } from "react-stax";
 import api from "./api";
 import modalStore from "./../stores/modalStore";
-import {trigger} from './../components/Admin/Modal'
+import { trigger } from "./../components/Admin/Modal";
 
 function processUser(data) {
   api.defaults.headers.Authorization = `Bearer ${data.token}`;
@@ -11,7 +11,7 @@ function processUser(data) {
 
 // body: { email, password }
 export async function login(body) {
-  const { data } = await api.post(`/login`, body).catch(error => trigger(error));;
+  const { data } = await api.post(`/login`, body);
   return processUser(data);
 }
 
