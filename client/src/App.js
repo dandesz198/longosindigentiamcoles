@@ -6,8 +6,6 @@ import AdminPage from "./views/AdminPage";
 import LoginPage from "./views/LoginPage";
 import ArticlePage from "./views/ArticlePage";
 import Resp_Modal from "./components/Admin/Modal";
-import { getAll } from './api/article'
-import articleStore from './stores/articleStore'
 // import styled from "styled-components";
 
 class App extends Component {
@@ -16,10 +14,10 @@ class App extends Component {
       <div className="App">
         <Resp_Modal />
         <Router defaultPage="home">
-          <HomePage page="home" onRoute={this.getArticles} />
+          <HomePage page="home"/>
           <LoginPage page="login" />
           <AdminPage page="admin" />
-          <ArticlePage page="articleStore." onRoute={this.getArticles} />
+          <ArticlePage page="article/?id="/>
         </Router>
       </div>
     );

@@ -1,21 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
 import { params, view } from "react-stax";
-import articleStore from "../stores/articleStore";
+import { get } from "../api/article";
 
-const selectArticle = () => {
-  const id = params.id;
-  articleStore.articles.forEach(e => {
-    if (e.id === id) {
-      return articleStore.articles.indexOf(e);
-    }
-  });
-};
+let article;
 
-const index = 0;
+class articlePage extends Component {
 
-export default view(() => (
-  <div>
-    <h1>{articleStore.articles[index].title}</h1>
-    <p>{articleStore.articles[index].text}</p>
-  </div>
-));
+  async componentWillUpdate() {
+    console.log(params.id);
+    console.log(await get(params.id));
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>article.title</h1>
+        {article.content}
+        <p>asd</p>
+      </div>
+    )
+  }
+}
+
+export default articlePage
+

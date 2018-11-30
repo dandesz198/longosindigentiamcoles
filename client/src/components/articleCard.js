@@ -42,7 +42,7 @@ class ArticleCard extends Component {
     return (
       <Container>
         <Title>{this.props.article.title}</Title>
-        {this.props.article.content}
+        <Paragraph dangerouslySetInnerHTML={{__html:  this.props.article.content}} />
         <Button to={"/articles/?id=" + this.props.article.id}>Read more</Button>
       </Container>
     );
