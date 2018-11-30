@@ -7,6 +7,11 @@ function processUser(data) {
   return data.user;
 }
 
+export async function getMe() {
+  const { data } = await api.get('/users/me')
+  return data
+}
+
 // body: { email, password }
 export async function login(body) {
   const { data } = await api.post(`/login`, body);
