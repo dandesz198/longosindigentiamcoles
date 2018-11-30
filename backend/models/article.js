@@ -25,7 +25,7 @@ async function get(id) {
 
   if (!article) {
     throw400({
-      id: "No post with matching ID found!"
+      msg: "No post with matching ID found!"
     });
   }
 
@@ -34,7 +34,7 @@ async function get(id) {
 
 async function create({ title, content, tags }) {
   const article = { title, content, tags };
-  article.id = generate(10)
+  article.id = generate(12)
   await db
     .collection(collectionName)
     .insertOne(article);

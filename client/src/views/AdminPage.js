@@ -17,7 +17,7 @@ const AdminWrapper = styled.div`
 
 class AdminPage extends Component {
   onRoute() {
-    !userStore.isLoggedIn && route({ to: "login" });
+    !userStore.token && route({ to: "login" });
   }
 
   render() {

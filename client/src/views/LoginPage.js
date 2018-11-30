@@ -67,6 +67,11 @@ class LoginPage extends Component {
     formValues.password = e.target.value;
   };
 
+  componentWillMount() {
+    console.log(userStore.token)
+    // userStore.token && route({ to: "admin" });
+  }
+
   onSubmit = e => {
     e.preventDefault();
     const { email, password } = formValues;
@@ -75,7 +80,6 @@ class LoginPage extends Component {
       userStore.name = name;
       userStore.role = role;
       userStore.email = email;
-      userStore.isLoggedIn = true;
       route({ to: "admin" });
     });
   };

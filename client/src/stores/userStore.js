@@ -1,7 +1,9 @@
 import { store } from "react-stax";
 
 const userStore = store({
-  isLoggedIn: false
+  name: '',
+  email: '',
+  token: undefined
 });
 
 export default userStore;
