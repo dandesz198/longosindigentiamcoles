@@ -11,7 +11,7 @@ function processUser(data) {
 
 // body: { email, password }
 export async function login(body) {
-  const { data } = await api.post(`/login`, body).catch(trigger(error));;
+  const { data } = await api.post(`/login`, body).catch(error => trigger(error));;
   return processUser(data);
 }
 
