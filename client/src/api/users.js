@@ -1,7 +1,5 @@
 import { storage } from "react-stax";
 import api from "./api";
-import modalStore from "./../stores/modalStore";
-import { trigger } from "./../components/Admin/Modal";
 
 function processUser(data) {
   api.defaults.headers.Authorization = `Bearer ${data.token}`;
@@ -27,6 +25,6 @@ export function logout() {
 }
 
 export async function list() {
-  const { data } = await api.get("/users");
+  const { data } = await api.get("/userStore.");
   return data;
 }

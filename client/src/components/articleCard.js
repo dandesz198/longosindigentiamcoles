@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link} from "react-stax";
+import { Link } from "react-stax";
 
 const Container = styled.div`
   width: 50%;
@@ -38,11 +38,12 @@ const Paragraph = styled.p`
 `;
 class ArticleCard extends Component {
   render() {
+    console.log('articlecard content', this.props)
     return (
       <Container>
-        <Title>{this.props.title}</Title>
-        <Paragraph>{this.props.description || "[No description]"}</Paragraph>
-          <Button to={"/articles/?id=" + this.props.id} >Read more</Button>
+        <Title>{this.props.article.title}</Title>
+        {this.props.article.content}
+        <Button to={"/articles/?id=" + this.props.article.id}>Read more</Button>
       </Container>
     );
   }

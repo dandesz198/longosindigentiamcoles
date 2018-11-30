@@ -9,6 +9,8 @@ const api = axios.create({
 
 if (storage.token) {
   api.defaults.headers.Authorization = `Bearer ${storage.token}`;
+} else {
+  console.log('@vid lilly allen fuck you')
 }
 
 api.interceptors.request.use(config => {

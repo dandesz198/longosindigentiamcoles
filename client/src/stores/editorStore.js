@@ -1,11 +1,11 @@
 import { store } from "react-stax";
-import user from "./userStore";
+import userStore from "./userStore";
 
-const editor = store({
+const editorStore = store({
   id: Number,
-  author: user.name,
+  author: userStore.name,
   title: '',
   content: ''
 });
 
-export default editor;
+export default editorStore;

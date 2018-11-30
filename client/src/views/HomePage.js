@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ArticleCard from "../components/articleCard";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-stax";
-import articleStore from '../stores/articleStore'
-
+import { view, Link } from "react-stax";
+import articleStore from "../stores/articleStore";
+import { getAll } from "../api/article";
 
 const TopDevNav = styled.div`
   background-color: #1e272e;
@@ -64,25 +64,24 @@ const Spinner = styled.div`
 `;
 
 class HomePage extends Component {
+  async componentDidMount() {
+    const articles = await getAll();
+    console.log({ articles })
+    articleStore.articles = await getAll();
+  }
+
   render() {
-    const  { articles } = articleStore;
+    const { articles } = articleStore;
     return (
       <div>
         <TopDevNav>
           <Link to="/admin">Admin</Link>
           <Link to="home">Home</Link>
         </TopDevNav>
-        {// Show spinner when there are no articles in state
-        articles.length !== 0 ? (
+        {// Show spinner when there are no articleStore. in state
+        articles.length > 0 ? (
           articles.map(article => {
-            return (
-              <ArticleCard
-                key={article.id}
-                id={article.id}
-                title={article.title}
-                description={article.description}
-              />
-            );
+            return <ArticleCard key={article.id} article={article} />;
           })
         ) : (
           <Container>
@@ -94,4 +93,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default view(HomePage);

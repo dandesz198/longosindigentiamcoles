@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { store, route, Link } from "react-stax";
-import user from "./../stores/userStore";
+import userStore from "./../stores/userStore";
 import styled from "styled-components";
 import { login } from "./../api/users";
 
@@ -72,10 +72,10 @@ class LoginPage extends Component {
     const { email, password } = formValues;
     login({ email, password }).then(data => {
       const { name, role } = data;
-      user.name = name;
-      user.role = role;
-      user.email = email;
-      user.isLoggedIn = true;
+      userStore.name = name;
+      userStore.role = role;
+      userStore.email = email;
+      userStore.isLoggedIn = true;
       route({ to: "admin" });
     });
   };

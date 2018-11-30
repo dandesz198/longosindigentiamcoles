@@ -17,7 +17,6 @@ async function all() {
   return db
     .collection(collectionName)
     .find()
-    .project({ id: 1 })
     .toArray();
 }
 

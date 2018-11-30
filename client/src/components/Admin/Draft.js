@@ -54,7 +54,7 @@ class Editor extends React.Component {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:3005/api/article/edit?content=${
+        `http://localhost:3005/api/articles/edit?content=${
           editorStore.content
         }&title=${editorStore.title}`
       )

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-stax";
-import user from "./../../stores/userStore";
+import userStore from "./../../stores/userStore";
 
 const StyledContainer = styled.div`
   list-style-type: none;
@@ -42,12 +42,12 @@ const CurrentUser = styled.div`
 const List = () => {
   return (
     <StyledContainer>
-      <Link to={`articles`}>Articles</Link>
-      <Link to={`newarticle`}>New Article</Link>
-      <Link to={`reg`}>Register New User</Link>
+      <Link to="articles">Articles</Link>
+      <Link to="newArticle">New Article</Link>
+      <Link to="register">Register New User</Link>
 
       <CurrentUser>
-        Hali, <b>{user.name || "Miért vagy itt?!"}</b>
+        Hali, <b>{userStore.name || "Miért vagy itt?!"}</b>
       </CurrentUser>
     </StyledContainer>
   );

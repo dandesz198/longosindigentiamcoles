@@ -2,8 +2,7 @@ import React from "react";
 import Draft from "./Draft";
 import { Router, Link } from "react-stax";
 import styled from "styled-components";
-import article from './../../stores/articleStore'
-
+import articleStore from "./../../stores/articleStore";
 
 const ListWrapper = styled.div`
   a,
@@ -26,6 +25,8 @@ const ListWrapper = styled.div`
 `;
 
 const List = () => {
+  const { articles } = articleStore;
+  console.log({ articles })
   return (
     <div>
       <ListWrapper>
@@ -34,11 +35,11 @@ const List = () => {
           <span>Author</span>
           <span>Title</span>
         </p>
-        {article.articles.map(post => (
-          <Link key={post.id} to={`../editor/?id=${post.id}`}>
-            <span>{post.id}</span>
-            <span>{post.author}</span>
-            <span>{post.title}</span>
+        {articles.map(article => (
+          <Link key={article.id} to={`../editor/?id=${article.id}`}>
+            <span>{article.id}</span>
+            <span>{article.author}</span>
+            <span>{article.title}</span>
             <br />
           </Link>
         ))}

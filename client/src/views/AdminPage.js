@@ -7,7 +7,7 @@ import Posts from "./../components/Admin/Posts";
 import NewArticle from "./../components/Admin/NewArticle";
 import Users from "./../components/Admin/Users";
 import RegPage from "./RegPage";
-import user from './../stores/userStore'
+import userStore from "./../stores/userStore";
 
 const AdminWrapper = styled.div`
   display: grid;
@@ -17,18 +17,18 @@ const AdminWrapper = styled.div`
 
 class AdminPage extends Component {
   onRoute() {
-     !user.isLoggedIn && route({to: 'login'})
+    !userStore.isLoggedIn && route({ to: "login" });
   }
 
   render() {
     return (
       <AdminWrapper>
         <Sidenav />
-        <Router defaultPage="articles" onRoute={this.onRoute}>
-          <Posts page="articles" />
-          <NewArticle page="newarticle" />
-          <Users page="users" />
-          <RegPage page="reg" />
+        <Router defaultPage="article" onRoute={this.onRoute}>
+          <Posts page="article" />
+          <NewArticle page="newArticle" />
+          <Users page="user" />
+          <RegPage page="register" />
         </Router>
       </AdminWrapper>
     );

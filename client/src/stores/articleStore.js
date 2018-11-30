@@ -1,6 +1,6 @@
 import { store } from "react-stax";
 import { getAll } from "./../api/article";
 
-const article = store({ articles: [getAll()] });
+const articleStore = store({ articles: [] });
 
-export default article;
+export default articleStore;

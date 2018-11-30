@@ -61,7 +61,7 @@ class NewArticle extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    create(store);
+    create(this.store);
   };
 
   handleChange = html => {
