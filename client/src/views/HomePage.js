@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { view, Link } from "react-stax";
 import articleStore from "../stores/articleStore";
 import { getAll } from "../api/article";
+import userStore from "../stores/userStore";
 
 const TopDevNav = styled.div`
   background-color: #1e272e;
@@ -66,8 +67,9 @@ const Spinner = styled.div`
 class HomePage extends Component {
   async componentDidMount() {
     const articles = await getAll();
-    console.log({ articles })
+    console.log({ articles });
     articleStore.articles = await getAll();
+    userStore.init();
   }
 
   render() {

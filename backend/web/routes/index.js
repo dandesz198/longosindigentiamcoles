@@ -14,6 +14,7 @@ publicRouter.post('/register', catchAsyncErrors(users.register))
 publicRouter.post('/login', catchAsyncErrors(users.login))
 // privateRouter.delete('/user/edit/:id', catchAsyncErrors(users.edit))
 publicRouter.get('/users', catchAsyncErrors(users.all))
+publicRouter.get('/users/me', catchAsyncErrors(users.me))
 privateRouter.delete('/user/delete/:id', catchAsyncErrors(users.delete))
 
 // article endpoints

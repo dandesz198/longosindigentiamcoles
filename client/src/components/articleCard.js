@@ -38,7 +38,6 @@ const Paragraph = styled.p`
 `;
 class ArticleCard extends Component {
   render() {
-    console.log('articlecard content', this.props)
     return (
       <Container>
         <Title>{this.props.article.title}</Title>

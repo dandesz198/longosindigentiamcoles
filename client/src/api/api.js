@@ -14,7 +14,6 @@ if (storage.token) {
 }
 
 if (userStore.token) {
-  console.log({ userStore });
   api.defaults.headers.Authorization = `Bearer ${userStore.token}`;
 }
 
