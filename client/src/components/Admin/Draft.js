@@ -1,11 +1,12 @@
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 import React from "react";
 import testPost from "../../stores/modalStore";
 import { view } from "react-stax";
 import styled from "styled-components";
-import axios from "axios";
 import editorStore from "../../stores/editorStore";
+import { get } from "../../api/article";
+
 
 const Button = styled.button`
   border: none;
@@ -39,31 +40,19 @@ function getQueryVariable(variable) {
 class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { theme: "snow" };
+    this.state = { theme: "bubble" };
   }
 
   componentDidMount() {
     const edited = testPost[Number(getQueryVariable("id"))];
-    editorStore.title = edited.title;
-    editorStore.content = edited.content;
-    editorStore.id = edited.id;
-    editorStore.author = edited.author;
+
+    console.log(get())
+
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    axios
-      .put(
-        `http://localhost:3005/api/articles/edit?content=${
-          editorStore.content
-        }&title=${editorStore.title}`
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+
   };
 
   handleChange = html => {

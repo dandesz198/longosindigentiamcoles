@@ -42,7 +42,7 @@ const CurrentUser = styled.div`
 const List = () => {
   return (
     <StyledContainer>
-      <Link to="articles">Articles</Link>
+      <Link to="article">Articles</Link>
       <Link to="newArticle">New Article</Link>
       <Link to="register">Register New User</Link>
 

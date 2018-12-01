@@ -19,7 +19,7 @@ const Wrapper = styled.div`
         bottom: 30vh;
         left: 0;
         right: 0;
-        input[type='text'], input[type='password']{
+        input[type='text'], input[type='password'], input[type="email"]{
             border: 2px solid #2f3542;
             padding: 1vh;
             margin-bottom: 1rem;
@@ -71,13 +71,15 @@ class LoginPage extends Component {
 
           <label htmlFor="email"> Email</label> <br />
           <input
-            type="text"
+            required
+            type="email"
             placeholder="email"
             onChange={this.handleChangeEmail}
           />{" "}
           <br />
           <label htmlFor="password">Password</label> <br />
           <input
+            required
             type="password"
             placeholder="Password"
             onChange={this.handleChangePassword}
@@ -85,6 +87,7 @@ class LoginPage extends Component {
           <br />
           <label htmlFor="name">Name</label> <br />
           <input
+            required
             type="text"
             placeholder="Name"
             onChange={this.handleChangeName}
