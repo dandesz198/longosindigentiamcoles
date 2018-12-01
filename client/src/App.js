@@ -6,18 +6,25 @@ import AdminPage from "./views/AdminPage";
 import LoginPage from "./views/LoginPage";
 import ArticlePage from "./views/ArticlePage";
 import Resp_Modal from "./components/Admin/Modal";
-// import styled from "styled-components";
+import { getAll } from "./api/article";
+import articleStore from "./stores/articleStore";
+import userStore from "./stores/userStore";
 
 class App extends Component {
+  async componentDidMount() {
+    articleStore.articles = await getAll();
+    userStore.init();
+  }
+
   render() {
     return (
       <div className="App">
         <Resp_Modal />
         <Router defaultPage="home">
-          <HomePage page="home"/>
+          <HomePage page="home" />
           <LoginPage page="login" />
           <AdminPage page="admin" />
-          <ArticlePage page="article/?id="/>
+          <ArticlePage page="article/?id=" />
         </Router>
       </div>
     );

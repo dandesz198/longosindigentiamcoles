@@ -1,7 +1,6 @@
 import axios from "axios";
 import { storage } from "react-stax";
 import modalStore from "../stores/modalStore";
-import userStore from "../stores/userStore";
 
 const api = axios.create({
   baseURL: "http://localhost:3005/api",
@@ -10,11 +9,6 @@ const api = axios.create({
 
 if (storage.token) {
   api.defaults.headers.Authorization = `Bearer ${storage.token}`;
-  userStore.token = storage.token;
-}
-
-if (userStore.token) {
-  api.defaults.headers.Authorization = `Bearer ${userStore.token}`;
 }
 
 api.interceptors.request.use(config => {

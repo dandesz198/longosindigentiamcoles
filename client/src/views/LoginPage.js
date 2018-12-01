@@ -69,7 +69,7 @@ class LoginPage extends Component {
 
   componentWillMount() {
     console.log(userStore.token)
-    userStore.token && route({ to: "admin" });
+    userStore.email && route({ to: "admin" });
   }
 
   onSubmit = e => {
