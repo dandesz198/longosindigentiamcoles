@@ -39,12 +39,23 @@ const Paragraph = styled.p`
 `;
 
 class ArticleCard extends Component {
+  state = {
+    description: ""
+  };
+
+  componentDidMount() {
+    const desr = this.props.article.content.replace(/<[^>]*>/g, " ");
+    this.setState({ description: desr.substring(0, 480) + "..." });
+  }
+
   render() {
     return (
       <Container>
         <Title>{this.props.article.title}</Title>
-        <Paragraph dangerouslySetInnerHTML={{__html:  this.props.article.content}} />
-        <Button to={"/articles/?id=" + this.props.article.id}>Read more</Button>
+        <Paragraph>{this.state.description}</Paragraph>
+        <Button to="/articles" params={{ id: this.props.article.id }}>
+          Read more
+        </Button>
       </Container>
     );
   }

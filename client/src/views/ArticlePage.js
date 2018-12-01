@@ -1,26 +1,21 @@
 import React, { Component } from "react";
-import { params, view } from "react-stax";
 import { get } from "../api/article";
-
-let article;
+import articleStore from "../stores/articleStore";
+import { view, params } from "react-stax";
 
 class articlePage extends Component {
-
-  async componentWillUpdate() {
-    console.log(params.id);
-    console.log(await get(params.id));
+  async componentDidMount() {
+    articleStore.article = await get(params.id);
   }
 
   render() {
     return (
       <div>
-        <h1>article.title</h1>
-        {article.content}
-        <p>asd</p>
+        <h1>{articleStore.article.title}</h1>
+        <p dangerouslySetInnerHTML={{ __html: articleStore.article.content }} />
       </div>
-    )
+    );
   }
 }
 
-export default articlePage
-
+export default view(articlePage);

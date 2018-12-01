@@ -72,6 +72,7 @@ class HomePage extends Component {
 
   render() {
     const { articles } = articleStore;
+    articles.reverse();
     return (
       <div>
         <TopDevNav>

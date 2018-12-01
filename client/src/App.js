@@ -14,10 +14,10 @@ class App extends Component {
       <div className="App">
         <Resp_Modal />
         <Router defaultPage="home">
-          <HomePage page="home"/>
+          <HomePage page="home" />
           <LoginPage page="login" />
           <AdminPage page="admin" />
-          <ArticlePage page="article/?id="/>
+          <ArticlePage page="articles" />
         </Router>
       </div>
     );
