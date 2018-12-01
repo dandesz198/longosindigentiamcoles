@@ -45,7 +45,7 @@ const Wrapper = styled.div`
     width: 100%;
     text-align: center !important;
     font-size: 1.3rem;
-    color: #57606f;
+    color: #444;
     h1 {
       color: #2f2f2f;
     }

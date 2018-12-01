@@ -20,6 +20,7 @@ class AdminPage extends Component {
     !userStore.token && route({ to: "login" });
   }
 
+
   render() {
     return (
       <AdminWrapper>

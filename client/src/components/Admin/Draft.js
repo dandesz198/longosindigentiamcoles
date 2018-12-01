@@ -1,30 +1,59 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import React from "react";
-import testPost from "../../stores/modalStore";
 import { view } from "react-stax";
 import styled from "styled-components";
 import editorStore from "../../stores/editorStore";
-import { get } from "../../api/article";
+import { get, update } from "../../api/article";
+import { async } from "rxjs/internal/scheduler/async";
 
 
 const Button = styled.button`
   border: none;
-  background-color: black;
+  background-color: #57606f;
+  width: 100%;
+  padding: 1rem;
   color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: 0.2s ease background-color;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  &:hover {
+    background-color: #747d8c;
+  }
 `;
 
 const TitleEdit = styled.div`
   padding: 6vh;
+  box-sizing: border-box;
   text-align: left;
-  font-size: 2rem;
   width: 100%;
   input {
-    font-size: 2rem;
+    width: 100%;
+    font-size: 2.5rem;
+    color: #2f3542;
+    text-align: center;
     border: none !important;
   }
 `;
+const Wrapper = styled.div`
+  position: relative;
+  height: 100vh;
 
+  .ql-editor {
+    height: 70vh;
+    width: 100%;
+    text-align: center !important;
+    font-size: 1.3rem;
+    color: #444;
+    h1 {
+      color: #2f2f2f;
+    }
+  }
+`;
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");
@@ -43,16 +72,21 @@ class Editor extends React.Component {
     this.state = { theme: "bubble" };
   }
 
-  componentDidMount() {
-    const edited = testPost[Number(getQueryVariable("id"))];
+  async componentDidMount() {
+    const edited = await get(Number(getQueryVariable("id")));
+    console.log(editorStore)
+    editorStore.title = edited.title
+    editorStore.content = edited.content
+  }
 
-    console.log(get())
-
+  componentWillUnmount(){
+    editorStore.title = ""
+    editorStore.content = ""
   }
 
   handleSubmit = e => {
     e.preventDefault();
-
+    update(Number(getQueryVariable("id")), editorStore)
   };
 
   handleChange = html => {
@@ -66,7 +100,7 @@ class Editor extends React.Component {
   render() {
     const { title, content } = editorStore;
     return (
-      <div>
+      <Wrapper>
         <TitleEdit>
           <input
             type="text"
@@ -84,8 +118,8 @@ class Editor extends React.Component {
           bounds={".app"}
           placeholder={content}
         />
-        <Button onClick={this.handleSubmit}>Button</Button>
-      </div>
+        <Button onClick={this.handleSubmit}>Update Article</Button>
+      </Wrapper>
     );
   }
 }

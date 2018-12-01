@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { store } from "react-stax";
 import {register} from "./../api/users";
 import styled from 'styled-components'
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css'
 
 const Wrapper = styled.div`
     color:  #2f3542;
@@ -19,10 +21,14 @@ const Wrapper = styled.div`
         bottom: 30vh;
         left: 0;
         right: 0;
-        input[type='text'], input[type='password'], input[type="email"]{
+        input[type='text'], input[type='password'], input[type="email"], .Dropdown-control{
             border: 2px solid #2f3542;
             padding: 1vh;
             margin-bottom: 1rem;
+        }
+        .Dropdown-root{
+          width: 180px;
+          margin: 0 auto 1rem auto;
         }
         input[type='submit']{
             border: none;
@@ -41,9 +47,18 @@ const Wrapper = styled.div`
 
 const formValues = store({
   email: String,
-  role: 'admin',
-  password: String
+  role: String,
+  password: String,
 });
+
+const options = [
+  { value: 'admin', label: 'Admin' },
+  { value: 'publisher', label: 'Publisher'},
+  { value: 'moderator', label: 'Moderator'}
+]
+const defaultOption = options[0]
+
+
 
 class LoginPage extends Component {
   handleChangeEmail = e => {
@@ -56,11 +71,15 @@ class LoginPage extends Component {
   handleChangeName = e => {
     formValues.name = e.target.value;
   };
+  handleChangeRole = e => {
+    console.clear()
+    formValues.role = e.value;
+  };
 
   onSubmit = e => {
     e.preventDefault();
     const {name, password, email, role} = formValues;
-    register({ email, password, name, role })
+    register({ email, password, name, role})
   };
 
   render() {
@@ -69,6 +88,13 @@ class LoginPage extends Component {
         <form onSubmit={this.onSubmit}>
         <h1>Register New Employee</h1>
 
+        <Dropdown 
+          options={options}
+            onChange={this.handleChangeRole}
+            value={defaultOption}
+            placeholder="Select an option"
+          />
+            {" "}
           <label htmlFor="email"> Email</label> <br />
           <input
             required
@@ -93,6 +119,8 @@ class LoginPage extends Component {
             onChange={this.handleChangeName}
           />{" "}
           <br />
+
+
           <input type="submit" />
         </form>
       </Wrapper>

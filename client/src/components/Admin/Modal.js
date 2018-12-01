@@ -21,7 +21,9 @@ class ResModal extends React.Component{
     onOpenModal = () => {
         setTimeout(function(){ store.shown = true}, 20000)      
       };
-    
+    onClose = () => {
+        
+    }
 
 
     render() {
@@ -31,17 +33,23 @@ class ResModal extends React.Component{
               open={store.shown}
               showCloseIcon={false}
               closeOnOverlayClick={false}
+              onClose={this.onClose}
               center
               styles={{
                 overlay: {
-                    backgroundColor: 'transparent'
+                    backgroundColor: 'transparent',
+                    maxWidth: "300px",
+                    maxHeight: "100px",
+                    position: 'absolute',
+                    bottom: '10px',
+                    right: '10px',
+                    top: 'auto',
+                    left: 'auto'
                 },
                 modal: {
                     backgroundColor: '#2f3542',
                     color: 'white',
-                    position: 'absolute',
-                    bottom: '10px',
-                    right: '10px',
+                    
                     maxWidth: '300px',
                     fontSize: '.7rem',
                     padding: '0 1rem'
