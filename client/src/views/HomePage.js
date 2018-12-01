@@ -66,8 +66,6 @@ const Spinner = styled.div`
 
 class HomePage extends Component {
   async componentDidMount() {
-    const articles = await getAll();
-    console.log({ articles });
     articleStore.articles = await getAll();
     userStore.init();
   }
