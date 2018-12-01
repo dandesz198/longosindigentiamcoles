@@ -30,12 +30,8 @@ const Button = styled(Link)`
 const Title = styled.h1`
   font-size: 2rem;
   margin: 2%;
-`;
+`; 
 
-const Paragraph = styled.p`
-  font-size: 1rem;
-  margin: 2%;
-`;
 class ArticleCard extends Component {
   render() {
     return (
