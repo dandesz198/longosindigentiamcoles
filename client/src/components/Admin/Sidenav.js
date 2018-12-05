@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-stax";
 import userStore from "./../../stores/userStore";
-import {getMe} from "../../api/users";
+import { getMe } from "../../api/users";
+
 const StyledContainer = styled.div`
   list-style-type: none;
   padding: 0;
@@ -53,13 +54,12 @@ const List = () => {
   );
 };
 
-class Sidenav extends React.Component{
-
-  async componentDidMount(){
-    console.log(await getMe())
+class Sidenav extends Component {
+  async componentDidMount() {
+    console.log(await getMe());
   }
-  render(){
-    return <List />
+  render() {
+    return <List />;
   }
 }
 

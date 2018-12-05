@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactQuill from "react-quill";
 import { view } from "react-stax";
 import "react-quill/dist/quill.bubble.css";
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
   }
 `;
 
-class Editor extends React.Component {
+class Editor extends Component {
   constructor(props) {
     super(props);
     const article = editorStore.articleData();
