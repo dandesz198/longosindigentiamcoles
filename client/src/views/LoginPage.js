@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { store, route, Link } from "react-stax";
-import userStore from "./../stores/userStore";
+import userStore from "../stores/user";
 import styled from "styled-components";
 import { login } from "./../api/users";
 
@@ -68,7 +68,7 @@ class LoginPage extends Component {
   };
 
   componentWillMount() {
-    console.log(userStore.token)
+    console.log(userStore.token);
     // userStore.token && route({ to: "admin" });
   }
 

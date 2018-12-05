@@ -1,8 +1,8 @@
 import React from "react";
 import Editor from "./Editor";
-import { Router, Link, route } from "react-stax";
+import { Router, route } from "react-stax";
 import styled from "styled-components";
-import articleStore from "./../../stores/articleStore";
+import articleStore from "../../stores/article";
 
 const ListWrapper = styled.div`
   button,
@@ -15,7 +15,9 @@ const ListWrapper = styled.div`
     padding: 1rem;
     color: white;
     text-decoration: none;
-    :focus { outline: none }
+    :focus {
+      outline: none;
+    }
   }
   p {
     background-color: transparent;

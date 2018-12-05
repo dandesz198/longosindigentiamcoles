@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { view } from "react-stax";
 import styled from "styled-components";
-import Modal from "react-responsive-modal";
-import modalStore from "./../../stores/modalStore";
+import ReactModal from "react-responsive-modal";
+import modalStore from "../../stores/modal";
 
 const Wrapper = styled.div`
   .overlay {
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const store = modalStore;
-class ResModal extends Component {
+class Modal extends Component {
   onOpenModal = () => {
     setTimeout(function() {
       store.shown = true;
@@ -26,7 +26,7 @@ class ResModal extends Component {
   render() {
     return (
       <Wrapper>
-        <Modal
+        <ReactModal
           open={store.shown}
           showCloseIcon={false}
           closeOnOverlayClick={false}
@@ -55,7 +55,7 @@ class ResModal extends Component {
         >
           <p>{store.head}</p>
           <h2>{store.body}</h2>
-        </Modal>
+        </ReactModal>
       </Wrapper>
     );
   }
@@ -64,12 +64,18 @@ class ResModal extends Component {
 const trigger = function(error) {
   if (error.response) {
     if (error.response.data.email) {
-      modalStore.show(error.response.data.email, "Something Is Not Correct");
+      modalStore.show(
+        error.response.data.email,
+        "Something is not right. Please try again later!"
+      );
     } else if (error.response.data.password) {
-      modalStore.show(error.response.data.password, "Something Is Not Correct");
+      modalStore.show(
+        error.response.data.password,
+        "Something is not right. Please try again later!"
+      );
     }
   }
 };
 
-export default view(ResModal);
+export default view(Modal);
 export { trigger };

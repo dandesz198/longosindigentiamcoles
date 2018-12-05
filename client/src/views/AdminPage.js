@@ -7,7 +7,7 @@ import Posts from "./../components/Admin/Posts";
 import Editor from "./../components/Admin/Editor";
 import Users from "./../components/Admin/Users";
 import RegPage from "./RegPage";
-import userStore from "./../stores/userStore";
+import userStore from "../stores/user";
 
 const AdminWrapper = styled.div`
   display: grid;
@@ -19,7 +19,6 @@ class AdminPage extends Component {
   onRoute() {
     !userStore.token && route({ to: "login" });
   }
-
 
   render() {
     return (

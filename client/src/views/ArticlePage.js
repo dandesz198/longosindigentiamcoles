@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { get } from "../api/article";
-import articleStore from "../stores/articleStore";
+import articleStore from "../stores/article";
 import { view, params } from "react-stax";
 
 class articlePage extends Component {

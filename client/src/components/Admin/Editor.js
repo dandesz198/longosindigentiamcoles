@@ -3,8 +3,7 @@ import ReactQuill from "react-quill";
 import { view } from "react-stax";
 import "react-quill/dist/quill.bubble.css";
 import styled from "styled-components";
-import { create } from "../../api/article";
-import editorStore from "../../stores/editorStore";
+import editorStore from "../../stores/editor";
 
 const Button = styled.button`
   border: none;

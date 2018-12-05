@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-stax";
-import userStore from "./../../stores/userStore";
+import userStore from "../../stores/user";
 import { getMe } from "../../api/users";
 
 const StyledContainer = styled.div`
