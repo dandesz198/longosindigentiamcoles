@@ -2,40 +2,29 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-stax";
 
-const Container = styled.div`
-  width: 50%;
-  margin: 2% auto;
-  box-shadow: 1px 1px 10px 3px black;
+const Container = styled(Link)`
+  color: black;
+  text-decoration: none;
+  width: 60%;
+  margin: 1% auto;
+  border-bottom: 3px solid #ECF0F1
   display: flex;
   text-align: left;
   flex-direction: column;
-`;
-
-const Button = styled(Link)`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  width: 10%;
-  text-decoration: none;
-  text-align: center;
-  margin: 0.5em auto;
-  padding: 0.5em 1em;
   transition: 0.3s;
   &:hover {
-    color: white;
-    background-color: palevioletred;
+    color: #424949;
   }
 `;
 
 const Title = styled.h1`
   font-size: 2rem;
-  margin: 2%;
+  margin: 2% 4%;
 `;
 
 const Paragraph = styled.p`
   font-size: 1rem;
-  margin: 2%;
+  margin: 2% 4%;
 `;
 
 class ArticleCard extends Component {
@@ -50,12 +39,9 @@ class ArticleCard extends Component {
 
   render() {
     return (
-      <Container>
+      <Container to="/articles" params={{ id: this.props.article.id }}>
         <Title>{this.props.article.title}</Title>
         <Paragraph>{this.state.description}</Paragraph>
-        <Button to="/articles" params={{ id: this.props.article.id }}>
-          Read more
-        </Button>
       </Container>
     );
   }
