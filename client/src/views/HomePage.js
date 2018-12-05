@@ -66,17 +66,16 @@ const Spinner = styled.div`
 
 class HomePage extends Component {
   async componentDidMount() {
-    articleStore.articles = await getAll();
     userStore.init();
+    articleStore.articles = await getAll();
   }
 
   render() {
     const { articles } = articleStore;
-    articles.reverse();
     return (
       <div>
         <TopDevNav>
-          <Link to="/admin">Admin</Link>
+          <Link to="/login">Admin</Link>
           <Link to="home">Home</Link>
         </TopDevNav>
         {// Show spinner when there are no articleStore. in state

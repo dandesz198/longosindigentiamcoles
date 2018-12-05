@@ -8,7 +8,7 @@ export async function create(body) {
 
 // body: { title, content, tags }
 export async function update(id, body) {
-  const { data } = await api.put(`/article/update/${id}`, body);
+  const { data } = await api.put(`/article/${id}`, body);
   return data;
 }
 

@@ -43,7 +43,7 @@ const List = () => {
   return (
     <StyledContainer>
       <Link to="article">Articles</Link>
-      <Link to="newArticle">New Article</Link>
+      <Link to="editor">New Article</Link>
       <Link to="register">Register New User</Link>
 
       <CurrentUser>

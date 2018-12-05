@@ -1,9 +1,10 @@
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.bubble.css";
 import React from "react";
-import { store } from "react-stax";
+import ReactQuill from "react-quill";
+import { view } from "react-stax";
+import "react-quill/dist/quill.bubble.css";
 import styled from "styled-components";
 import { create } from "../../api/article";
+import editorStore from "../../stores/editorStore";
 
 const Button = styled.button`
   border: none;
@@ -52,30 +53,43 @@ const Wrapper = styled.div`
   }
 `;
 
-class NewArticle extends React.Component {
+class Editor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { theme: "bubble" };
+    const article = editorStore.articleData();
+    this.state = {
+      theme: "bubble",
+      ...article,
+      isNew: !!!article.id
+    };
   }
-  store = store({ content: "", title: "" });
+
+  componentWillMount() {
+    console.log("kurva anyadat");
+  }
+
+  componentWillUnmount() {
+    editorStore.empty();
+  }
 
   handleSubmit = e => {
     e.preventDefault();
-    create(this.store);
   };
 
   handleChange = html => {
-    this.store.content = html;
+    this.setState({ content: html });
   };
 
   handleTitleChange = e => {
-    this.store.title = e.target.value;
+    this.setState({ title: e.target.value });
   };
 
   render() {
     return (
       <Wrapper>
-        <Button onClick={this.handleSubmit}>Create Article</Button>
+        <Button onClick={this.handleSubmit}>{`${
+          this.state.isNew ? "Edit" : "Create"
+        } Article`}</Button>
         <TitleEdit>
           <input
             maxLength="50"
@@ -88,9 +102,9 @@ class NewArticle extends React.Component {
         <ReactQuill
           theme={this.state.theme}
           onChange={this.handleChange}
-          value={this.store.content}
-          modules={NewArticle.modules}
-          formats={NewArticle.formats}
+          value={this.state.content}
+          modules={Editor.modules}
+          formats={Editor.formats}
           bounds={".app"}
           placeholder=""
         />
@@ -103,7 +117,7 @@ class NewArticle extends React.Component {
  * Quill modules to attach to NewArticle
  * See https://quilljs.com/docs/modules/ for complete options
  */
-NewArticle.modules = {
+Editor.modules = {
   toolbar: [
     [{ header: "2" }, { font: [] }],
     [{ size: [] }],
@@ -127,7 +141,7 @@ NewArticle.modules = {
  * Quill NewArticle formats
  * See https://quilljs.com/docs/formats/
  */
-NewArticle.formats = [
+Editor.formats = [
   "header",
   "font",
   "size",
@@ -141,4 +155,4 @@ NewArticle.formats = [
   "indent",
   "link"
 ];
-export default NewArticle;
+export default view(Editor);

@@ -1,11 +1,11 @@
 import React from "react";
-import Draft from "./Draft";
-import { Router, Link } from "react-stax";
+import Editor from "./Editor";
+import { Router, Link, route } from "react-stax";
 import styled from "styled-components";
 import articleStore from "./../../stores/articleStore";
 
 const ListWrapper = styled.div`
-  a,
+  button,
   p {
     display: inline-grid;
     width: 80%;
@@ -15,6 +15,7 @@ const ListWrapper = styled.div`
     padding: 1rem;
     color: white;
     text-decoration: none;
+    :focus { outline: none }
   }
   p {
     background-color: transparent;
@@ -26,7 +27,7 @@ const ListWrapper = styled.div`
 
 const List = () => {
   const { articles } = articleStore;
-  console.log({ articles })
+  console.log({ articles });
   return (
     <div>
       <ListWrapper>
@@ -36,12 +37,14 @@ const List = () => {
           <span>Title</span>
         </p>
         {articles.map(article => (
-          <Link key={article.id} to={`../editor/?id=${article.id}`}>
+          <button
+            onClick={() => route({ to: "editor", params: { id: article.id } })}
+          >
             <span>{article.id}</span>
             <span>{article.author}</span>
             <span>{article.title}</span>
             <br />
-          </Link>
+          </button>
         ))}
       </ListWrapper>
     </div>
@@ -52,7 +55,7 @@ const Posts = () => {
   return (
     <Router defaultPage="list">
       <List page="list" />
-      <Draft page="editor" />
+      <Editor page="editor" />
     </Router>
   );
 };
