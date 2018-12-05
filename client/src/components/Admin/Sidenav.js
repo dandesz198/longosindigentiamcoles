@@ -59,7 +59,7 @@ const List = () => {
     <StyledContainer>
       <Heading>Longos Indigentiam Coles</Heading>
       <Subheading>
-        Howdy, <b>{userStore.name || "unknown"}</b>!
+        Howdy, <b>{userStore.name}</b>!
       </Subheading>
       <Link to="article">Articles</Link>
       <button
