@@ -13,7 +13,7 @@ const TopDevNav = styled.div`
     padding: 1vh 4vh;
     color: white;
     text-decoration: none;
-    &:hover {
+    :hover {
       background-color: #2f3542;
     }
   }
@@ -49,7 +49,7 @@ const Spinner = styled.div`
   width: 64px;
   height: 64px;
   border-radius: 64px;
-  &:before {
+  :before {
     position: absolute;
     width: 64px;
     height: 64px;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-stax";
+import { Link, route } from "react-stax";
+import editorStore from "../../stores/editor";
 import userStore from "../../stores/user";
 import { getMe } from "../../api/users";
 
@@ -11,45 +12,72 @@ const StyledContainer = styled.div`
   margin: 0;
   height: 100%;
   display: flex;
-  background-color: #1e272e;
+  background-color: #fafafa;
   box-sizing: border-box;
   flex-direction: column;
-  a {
-    width: 100%;
-    box-sizing: border-box;
-    margin: 4vh 0 0 0;
-    padding: 1.5vh 0;
-    background-color: #ff4757;
-    color: white;
-    transition: 0.2s ease background-color;
+  box-shadow: 5px 0 15px #ececec;
+  a,
+  button {
+    border: 0;
+    padding: 10px 0;
+    margin: 0;
+    padding-left: 20px;
+    color: black;
+    transition: 0.1s ease-in-out all;
+    text-align: left;
+    font-size: 16px;
     text-decoration: none;
-    &:hover {
-      background-color: #ff6b81;
+    background-color: #ededed;
+    :hover {
+      background-color: #cecece;
+      transition: 0.1s ease-in-out all;
+    }
+    :focus {
+      outline: none;
     }
   }
 `;
 
-const CurrentUser = styled.div`
-  position: absolute;
-  font-size: 1.1rem;
-  bottom: 0;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #2f3542;
-  color: white;
+const Heading = styled.p`
+  margin: 0;
+  padding: 0;
+  margin: 30px 0 0 20px;
+  text-align: left;
+  color: black;
+  font-size: 36px;
+  font-weight: 800;
+`;
+
+const Subheading = styled(Heading)`
+  margin: 20px;
+  font-size: 20px;
+  font-weight: 200;
 `;
 
 const List = () => {
   return (
     <StyledContainer>
+      <Heading>Longos Indigentiam Coles</Heading>
+      <Subheading>
+        Howdy, <b>{userStore.name || "unknown"}</b>!
+      </Subheading>
       <Link to="article">Articles</Link>
-      <Link to="editor">New Article</Link>
+      <button
+        onClick={() => {
+          editorStore.empty();
+          route({ to: "admin/editor" });
+        }}
+        style={{
+          border: "1px #CECECE",
+          borderStyle: "solid none"
+        }}
+      >
+        New Article
+      </button>
       <Link to="register">Register New User</Link>
-
-      <CurrentUser>
-        Hali, <b>{userStore.name || "Miért vagy itt?!"}</b>
-      </CurrentUser>
+      <Link to="/" style={{ marginTop: "auto" }}>
+        Go to home
+      </Link>
     </StyledContainer>
   );
 };

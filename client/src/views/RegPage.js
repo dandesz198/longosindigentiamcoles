@@ -37,7 +37,7 @@ const Wrapper = styled.div`
             padding: 1vh;
             border-radius: 30px;
             transition: .2s ease background-color;
-            &:hover{
+            :hover{
                 background-color: #747d8c;
             }
         }

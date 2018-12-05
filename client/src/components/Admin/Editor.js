@@ -18,7 +18,7 @@ const Button = styled.button`
   position: absolute;
   bottom: 0;
   left: 0;
-  &:hover {
+  :hover {
     background-color: #747d8c;
   }
 `;

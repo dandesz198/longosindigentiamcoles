@@ -37,7 +37,7 @@ const Wrapper = styled.div`
       padding: 1vh;
       border-radius: 30px;
       transition: 0.2s ease background-color;
-      &:hover {
+      :hover {
         background-color: #747d8c;
       }
     }
@@ -53,7 +53,7 @@ const TopDevNav = styled.div`
     padding: 1vh 4vh;
     color: white;
     text-decoration: none;
-    &:hover {
+    :hover {
       background-color: #2f3542;
     }
   }
