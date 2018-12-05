@@ -40,7 +40,7 @@ const List = () => {
         </p>
         {articles.map(article => (
           <button
-            onClick={() => route({ to: "editor", params: { id: article.id } })}
+            onClick={() => route({ to: "admin/editor", params: { id: article.id } })}
           >
             <span>{article.id}</span>
             <span>{article.author}</span>

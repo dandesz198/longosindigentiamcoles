@@ -89,7 +89,7 @@ class LoginPage extends Component {
       <Wrapper>
         <TopDevNav>
           <Link to="/admin">Admin</Link>
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
         </TopDevNav>
         <form onSubmit={this.onSubmit}>
           <h1>Log In</h1>
