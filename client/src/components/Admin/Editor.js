@@ -4,31 +4,32 @@ import { view } from "react-stax";
 import "react-quill/dist/quill.bubble.css";
 import styled from "styled-components";
 import editorStore from "../../stores/editor";
-import { get } from "../../api/article";
+import articleStore from "../../stores/article";
+import { create, update } from "../../api/article";
 
 const Button = styled.button`
   border: 0;
-    padding: 10px 0;
-    margin: 0;
-    padding-left: 20px;
-    color: black;
+  padding: 10px 0;
+  margin: 0;
+  padding-left: 20px;
+  color: black;
+  transition: 0.1s ease-in-out all;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #ededed;
+  :hover {
+    background-color: #cecece;
     transition: 0.1s ease-in-out all;
-    text-align: center;
-    font-size: 16px;
-    text-decoration: none;
-    font-weight: bold;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #ededed;
-    :hover {
-      background-color: #cecece;
-      transition: 0.1s ease-in-out all;
-    }
-    :focus {
-      outline: none;
-    }
+  }
+  :focus {
+    outline: none;
+  }
 `;
 
 const TitleEdit = styled.div`
@@ -69,7 +70,6 @@ class Editor extends Component {
       ...article,
       isNew: !!!article.id
     };
-    console.log(this.state)
   }
 
   componentWillUnmount() {
@@ -78,6 +78,18 @@ class Editor extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    editorStore.setArticleData({
+      ...this.state,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
+    if (this.state.isNew) {
+      create(editorStore.getArticleData());
+    } else {
+      update(this.state.id, editorStore.getArticleData());
+    }
+    articleStore.updateAll();
+    this.forceUpdate();
   };
 
   handleChange = html => {

@@ -62,7 +62,7 @@ async function register({ email, password, name, role }) {
   return user;
 }
 
-async function update(id, data) {
+async function update({ id, data }) {
   await db
     .collection(collectionName)
     .updateOne({ id: id }, { $set: data })
@@ -74,11 +74,9 @@ async function update(id, data) {
   return data;
 }
 
-async function deleteById(id) {
-  await db
-    .collection(collectionName)
-    .remove({ id: id })
-  return 'Success!';
+async function deleteById({ id }) {
+  await db.collection(collectionName).remove({ id: id });
+  return "Success!";
 }
 
 module.exports = {

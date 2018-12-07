@@ -34,26 +34,20 @@ async function get(id) {
 
 async function create({ title, content, tags }) {
   const article = { title, content, tags };
-  article.id = generate(12)
-  await db
-    .collection(collectionName)
-    .insertOne(article);
+  article.id = generate(12);
+  await db.collection(collectionName).insertOne(article);
   return article;
 }
 
-async function update(id, data) {
-  await db
-    .collection(collectionName)
-    .updateOne({ id: id }, { $set: data })
-  return data;
+async function update(id, article) {
+  await db.collection(collectionName).updateOne({ id: id }, { $set: article });
+  return article;
 }
 
-async function deleteById(id) {
-    await db
-      .collection(collectionName)
-      .remove({ id: id })
-    return 'Success!';
-  }
+async function deleteById({ id }) {
+  await db.collection(collectionName).remove({ id: id });
+  return "Success!";
+}
 
 module.exports = {
   get raw() {

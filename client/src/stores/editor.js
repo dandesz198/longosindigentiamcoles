@@ -5,20 +5,20 @@ const editor = store({
   title: "",
   content: "",
   createdAt: new Date(),
-  updated: new Date(),
+  updatedAt: new Date(),
   empty() {
     editor.id = null;
     editor.title = null;
     editor.content = null;
     editor.createdAt = null;
-    editor.updated = null;
+    editor.updatedAt = null;
   },
   setArticleData(article) {
     editor.id = article.id;
     editor.title = article.title;
     editor.content = article.content;
     editor.createdAt = article.createdAt;
-    editor.updated = article.updated;
+    editor.updatedAt = article.updatedAt;
   },
   getArticleData() {
     return {
@@ -26,7 +26,7 @@ const editor = store({
       title: editor.title,
       content: editor.content,
       createdAt: editor.createdAt,
-      updated: editor.updated
+      updatedAt: editor.updatedAt
     };
   }
 });
