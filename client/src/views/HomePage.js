@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ArticleCard from "../components/articleCard";
+import ArticleCard from "../components/User/ArticleCard";
 import styled, { keyframes } from "styled-components";
 import { view, Link } from "react-stax";
 import articleStore from "../stores/article";
