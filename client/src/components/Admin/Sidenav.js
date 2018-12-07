@@ -74,7 +74,7 @@ const List = () => {
       >
         New Article
       </button>
-      {userStore.role === "admin" && <Link to="register">Register New User</Link>}
+      {userStore.role != "admin" && <Link to="register">Register New User</Link>}
       <Link to="/" style={{ marginTop: "auto" }}>
         Go to home
       </Link>

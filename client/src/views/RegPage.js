@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { store } from "react-stax";
+import { store, view } from "react-stax";
 import {register} from "./../api/users";
 import styled from 'styled-components'
 import Dropdown from 'react-dropdown'
@@ -46,9 +46,9 @@ const Wrapper = styled.div`
 
 
 const formValues = store({
-  email: String,
-  role: String,
-  password: String,
+  email: '',
+  role: '',
+  password: '',
 });
 
 const options = [
@@ -61,6 +61,12 @@ const defaultOption = options[0]
 
 
 class LoginPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { message: "" };
+  }
+
+
   handleChangeEmail = e => {
     formValues.email = e.target.value;
   };
@@ -79,7 +85,14 @@ class LoginPage extends Component {
   onSubmit = e => {
     e.preventDefault();
     const {name, password, email, role} = formValues;
+    formValues.name = undefined;
+    formValues.email = undefined;
+    formValues.password = undefined;
+    console.log({formValues})
     register({ email, password, name, role})
+    this.setState({message: role})
+    
+    console.log(this.state.message)
   };
 
   render() {
@@ -120,7 +133,9 @@ class LoginPage extends Component {
           />{" "}
           <br />
 
-
+            {this.state.message && <p>
+              Sikeresen létrehoztál egy {this.state.message}-t!
+            </p>}
           <input type="submit" />
         </form>
       </Wrapper>
@@ -128,4 +143,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default view(LoginPage);
