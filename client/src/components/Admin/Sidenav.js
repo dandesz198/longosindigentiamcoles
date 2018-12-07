@@ -59,7 +59,7 @@ const List = () => {
     <StyledContainer>
       <Heading>Longos Indigentiam Coles</Heading>
       <Subheading>
-        Howdy, <b>{userStore.name}</b>!
+        Howdy, <b>{userStore.name}</b>!  <small>({userStore.role})</small>
       </Subheading>
       <Link to="article">Articles</Link>
       <button
@@ -74,7 +74,7 @@ const List = () => {
       >
         New Article
       </button>
-      <Link to="register">Register New User</Link>
+      {userStore.role === "admin" && <Link to="register">Register New User</Link>}
       <Link to="/" style={{ marginTop: "auto" }}>
         Go to home
       </Link>

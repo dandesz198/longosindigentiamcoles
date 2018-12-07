@@ -7,21 +7,28 @@ import editorStore from "../../stores/editor";
 import { get } from "../../api/article";
 
 const Button = styled.button`
-  border: none;
-  background-color: #57606f;
-  width: 100%;
-  padding: 1rem;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: 0.2s ease background-color;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  :hover {
-    background-color: #747d8c;
-  }
+  border: 0;
+    padding: 10px 0;
+    margin: 0;
+    padding-left: 20px;
+    color: black;
+    transition: 0.1s ease-in-out all;
+    text-align: center;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #ededed;
+    :hover {
+      background-color: #cecece;
+      transition: 0.1s ease-in-out all;
+    }
+    :focus {
+      outline: none;
+    }
 `;
 
 const TitleEdit = styled.div`
