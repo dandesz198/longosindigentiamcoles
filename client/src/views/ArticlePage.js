@@ -5,7 +5,7 @@ import articleStore from "../stores/article";
 import { view, params } from "react-stax";
 
 const MainContainer = styled.div`
-  width 70%;
+  width: 70%;
   margin: 0 auto;
   text-align: left;
   p {
@@ -23,7 +23,7 @@ const MainContainer = styled.div`
     transition: 0.3s;
   } 
   a:hover {
-    color: #1B4F72
+    color: #1B4F72;
     text-decoration: underline;  
   }
 `;
