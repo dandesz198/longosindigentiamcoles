@@ -3,6 +3,7 @@ import Editor from "./Editor";
 import { Router, route } from "react-stax";
 import styled from "styled-components";
 import articleStore from "../../stores/article";
+import editorStore from "../../stores/editor";
 
 const ListWrapper = styled.div`
   button,
@@ -40,7 +41,10 @@ const List = () => {
         </p>
         {articles.map(article => (
           <button
-            onClick={() => route({ to: "admin/editor", params: { id: article.id } })}
+            onClick={() => {
+              editorStore.setArticleData(article);
+              route({ to: "admin/editor", params: { id: article.id } });
+            }}
           >
             <span>{article.id}</span>
             <span>{article.author}</span>

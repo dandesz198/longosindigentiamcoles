@@ -4,6 +4,7 @@ import { view } from "react-stax";
 import "react-quill/dist/quill.bubble.css";
 import styled from "styled-components";
 import editorStore from "../../stores/editor";
+import { get } from "../../api/article";
 
 const Button = styled.button`
   border: none;
@@ -55,16 +56,13 @@ const Wrapper = styled.div`
 class Editor extends Component {
   constructor(props) {
     super(props);
-    const article = editorStore.articleData();
+    const article = editorStore.getArticleData();
     this.state = {
       theme: "bubble",
       ...article,
       isNew: !!!article.id
     };
-  }
-
-  componentWillMount() {
-    console.log("kurva anyadat");
+    console.log(this.state)
   }
 
   componentWillUnmount() {
@@ -87,7 +85,7 @@ class Editor extends Component {
     return (
       <Wrapper>
         <Button onClick={this.handleSubmit}>{`${
-          this.state.isNew ? "Edit" : "Create"
+          this.state.isNew ? "Create" : "Edit"
         } Article`}</Button>
         <TitleEdit>
           <input
@@ -95,6 +93,7 @@ class Editor extends Component {
             type="text"
             name="title"
             placeholder="Title"
+            value={this.state.title}
             onChange={this.handleTitleChange}
           />
         </TitleEdit>

@@ -13,7 +13,14 @@ const editor = store({
     editor.createdAt = null;
     editor.updated = null;
   },
-  articleData() {
+  setArticleData(article) {
+    editor.id = article.id;
+    editor.title = article.title;
+    editor.content = article.content;
+    editor.createdAt = article.createdAt;
+    editor.updated = article.updated;
+  },
+  getArticleData() {
     return {
       id: editor.id,
       title: editor.title,
